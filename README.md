@@ -8,7 +8,7 @@
 
 **En una frase:** se puede lanzar `fxstreet.es` cuando cierres el alcance (qué va en ES), un humano revise los CSV de UI, y CMS tenga contenido en las verticales “Sí ES”. El español de interfaz es **borrador IA** → hay que revisarlo.
 
-**Cómo usar los CSV:** abre el enlace → GitHub **Download raw file** → rellena columna **Español (revisado)** y **Estado = Revisado** → sube el mismo archivo al repo. Columnas: Carpeta · Bloque · Clave · Inglés · Español borrador · Español revisado · Estado · Comentarios. No borres **Clave**.
+**Cómo usar los CSV:** abre el enlace → GitHub **Download raw file** → rellena columna **Español (revisado)** y **Estado = Revisado** → devuelve el mismo archivo al equipo de IT. Columnas: Carpeta · Bloque · Clave · Inglés · Español borrador · Español revisado · Estado · Comentarios. No borres **Clave**.
 
 Los CSV son **solo UI** (menús, botones, SEO de plantilla, legales estáticos…). **No** incluyen artículos CMS, fichas de brókers/autores ni eventos del calendario.
 
