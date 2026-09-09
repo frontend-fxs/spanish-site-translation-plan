@@ -4,7 +4,7 @@
 |--|--|
 | **Para** | Product Owner |
 | **Estado** | Pendiente de decisiones + revisión de CSV |
-| **Ingeniería** | [tecnico/](./tecnico/INFORME-tecnico.md) (detalle técnico; no hace falta para gestionar traducciones) |
+| **Ingeniería** | [TECNICO.md](./TECNICO.md) (detalle técnico; no hace falta para gestionar traducciones) |
 
 **En una frase:** se puede lanzar `fxstreet.es` cuando cierres el alcance (qué va en ES), un humano revise los CSV de UI, y CMS tenga contenido en las verticales “Sí ES”. El español de interfaz es **borrador IA** → hay que revisarlo.
 
@@ -99,4 +99,4 @@ Flujo por lote: cerrar decisiones → descargar CSV → encargar revisión → s
 
 ---
 
-*Detalle técnico (rama Site, gates EN-only, checklist deploy): [tecnico/INFORME-tecnico.md](./tecnico/INFORME-tecnico.md).*
+*Detalle técnico (rama Site, gates EN-only, checklist deploy): [TECNICO.md](./TECNICO.md).*

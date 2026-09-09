@@ -10,7 +10,7 @@ from collections import defaultdict
 from pathlib import Path
 
 SITE = Path(r"c:\Users\oriol\source\repos\Site")
-OUT = Path(__file__).resolve().parents[2] / "csv"
+OUT = Path(__file__).resolve().parents[1] / "csv"
 
 HEADERS = [
     "Carpeta",
