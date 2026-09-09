@@ -1,6 +1,6 @@
 # Checklist operativo — Site español
 
-Documento de **ejecución**. Alcance producto: [../producto/INFORME-product-owner.md](../producto/INFORME-product-owner.md). Alcance técnico: [INFORME-tecnico.md](./INFORME-tecnico.md).
+Documento de **ejecución**. Alcance producto: [../README.md](../README.md). Alcance técnico: [INFORME-tecnico.md](./INFORME-tecnico.md).
 
 **Convención de estado**
 

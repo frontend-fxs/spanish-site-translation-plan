@@ -1,18 +1,16 @@
 """
-Genera CSV no técnicos para el Product Owner a partir de los diccionarios EN/ES del Site.
-Estructura: adjuntos/<lote>/<carpeta>.csv  (espejo de agrupación por carpetas).
+Genera CSV no técnicos (un archivo por lote) en csv/ para el README del plan.
 """
 from __future__ import annotations
 
 import csv
 import json
 import re
-import shutil
 from collections import defaultdict
 from pathlib import Path
 
 SITE = Path(r"c:\Users\oriol\source\repos\Site")
-OUT = Path(__file__).resolve().parents[2] / "producto" / "adjuntos"
+OUT = Path(__file__).resolve().parents[2] / "csv"
 
 HEADERS = [
     "Carpeta",
@@ -26,16 +24,16 @@ HEADERS = [
 ]
 
 LOTE_META = {
-    "01-legal": ("01-legal", "Legal y políticas", "Alta"),
-    "02-seo-navegacion": ("02-seo-navegacion", "SEO, navegación y errores", "Alta"),
-    "03-cuenta-premium": ("03-cuenta-premium", "Cuenta y premium", "Alta"),
+    "01-legal": ("01-legal.csv", "Legal y políticas", "Alta"),
+    "02-seo-navegacion": ("02-seo-navegacion.csv", "SEO, navegación y errores", "Alta"),
+    "03-cuenta-premium": ("03-cuenta-premium.csv", "Cuenta y premium", "Alta"),
     "04-calendario-rates-brokers": (
-        "04-calendario-rates-brokers",
+        "04-calendario-rates-brokers.csv",
         "Calendario, rates y brókers",
         "Alta",
     ),
-    "05-resto-verticales": ("05-resto-verticales", "Resto de verticales y home", "Media"),
-    "06-rss": ("06-rss", "RSS", "Media"),
+    "05-resto-verticales": ("05-resto-verticales.csv", "Resto de verticales y home", "Media"),
+    "06-rss": ("06-rss.csv", "RSS", "Media"),
 }
 
 
@@ -123,10 +121,6 @@ def friendly_paths(rel: str) -> tuple[str, str]:
         return "rss", "rss-feed"
     return "otros", Path(r).stem
 
-
-def csv_name_for_carpeta(carpeta: str) -> str:
-    safe = carpeta.replace("/", "__").replace(" ", "_")
-    return f"{safe}.csv"
 
 
 def collect_json_rows():
@@ -227,56 +221,13 @@ def write_csv(path: Path, rows: list[dict]):
 
 
 def write_lote(lote_id: str, rows: list[dict]):
-    folder_name, titulo, prioridad = LOTE_META[lote_id]
-    lote_dir = OUT / folder_name
-    if lote_dir.exists():
-        shutil.rmtree(lote_dir)
-    lote_dir.mkdir(parents=True)
-
-    by_folder: dict[str, list[dict]] = defaultdict(list)
-    for row in rows:
-        by_folder[row["carpeta"]].append(row)
-
-    # Un CSV por carpeta + uno completo del lote (fácil de adjuntar entero)
-    all_name = f"_TODAS_LAS_CARPETAS.csv"
-    write_csv(lote_dir / all_name, rows)
-
-    for carpeta in sorted(by_folder.keys()):
-        write_csv(lote_dir / csv_name_for_carpeta(carpeta), by_folder[carpeta])
-
-    leeme = lote_dir / "LEEME.txt"
-    leeme.write_text(
-        "\n".join(
-            [
-                f"Lote: {titulo}",
-                f"Prioridad: {prioridad}",
-                f"Filas: {len(rows)}",
-                f"Carpetas (CSV): {len(by_folder)}",
-                "",
-                "Cómo usar:",
-                f"- Opción A: abrir `{all_name}` (todo el lote en un solo CSV).",
-                "- Opción B: abrir el CSV de cada carpeta (mismo agrupado que el inventario).",
-                "- Rellena la columna «Español (revisado)» y pon Estado = Revisado.",
-                "- No borres la columna Clave.",
-                "- Devuelve los CSV a la misma carpeta en el repo (GitHub).",
-                "",
-                "Columnas: Carpeta | Bloque | Clave | Inglés | Español borrador | Español revisado | Estado | Comentarios",
-            ]
-        ),
-        encoding="utf-8",
-    )
-    print(f"Wrote {folder_name}/ ({len(rows)} rows, {len(by_folder)} carpetas)")
+    filename, titulo, prioridad = LOTE_META[lote_id]
+    OUT.mkdir(parents=True, exist_ok=True)
+    write_csv(OUT / filename, rows)
+    print(f"Wrote {filename} ({len(rows)} rows) — {titulo} [{prioridad}]")
 
 
 def main():
-    # Limpia Excel antiguos y CSV sueltos de versiones previas
-    if OUT.exists():
-        for p in OUT.iterdir():
-            if p.suffix.lower() in {".xlsx", ".csv"} and p.name != "indice_lotes.csv":
-                p.unlink()
-            if p.is_dir() and re.match(r"^\d{2}-", p.name):
-                shutil.rmtree(p)
-
     by_lote = collect_json_rows()
     nav = collect_nav_rows()
     if nav:
@@ -289,18 +240,9 @@ def main():
     index_path = OUT / "indice_lotes.csv"
     with index_path.open("w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["lote", "carpeta_drive", "titulo", "prioridad", "filas", "csv_completo"])
-        for lote_id, (folder, titulo, prio) in LOTE_META.items():
-            w.writerow(
-                [
-                    lote_id,
-                    folder,
-                    titulo,
-                    prio,
-                    len(by_lote.get(lote_id, [])),
-                    f"{folder}/_TODAS_LAS_CARPETAS.csv",
-                ]
-            )
+        w.writerow(["lote", "archivo", "titulo", "prioridad", "filas"])
+        for lote_id, (filename, titulo, prio) in LOTE_META.items():
+            w.writerow([lote_id, filename, titulo, prio, len(by_lote.get(lote_id, []))])
     print("Index:", index_path)
 
 

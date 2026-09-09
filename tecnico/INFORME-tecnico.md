@@ -7,7 +7,7 @@
 | **Versión** | 1.1 |
 | **Fecha** | 9 de septiembre de 2026 |
 | **Rama Site** | `chore/modular-messages-i18n` |
-| **Informe producto** | [../producto/INFORME-product-owner.md](../producto/INFORME-product-owner.md) |
+| **Informe producto (1 página)** | [../README.md](../README.md) |
 
 ---
 
@@ -31,7 +31,7 @@ Preparación del Site (Next.js, un locale por deploy) para go-live en `fxstreet.
 
 ## 2. Decisiones de producto (referencia)
 
-Las decide el PO en el [informe de producto §3](../producto/INFORME-product-owner.md). Mapeo técnico:
+Las decide el PO en el [README §1](../README.md). Mapeo técnico:
 
 | PO | Código / comportamiento actual |
 |----|--------------------------------|
@@ -67,11 +67,10 @@ Crawl: [crawl/fxstreet-es-live.csv](./crawl/fxstreet-es-live.csv) (67 URLs, slug
 
 ## 5. Checklist, anexos y reintegración de CSV PO
 
-Los lotes de producto son CSV en `../producto/adjuntos/<lote>/` (sin paths JSON para el PO).  
-Por lote: `_TODAS_LAS_CARPETAS.csv` + un CSV por carpeta.  
-Para regenerarlos: `python tecnico/scripts/generar_adjuntos_csv.py` (desde la raíz del plan).
+Los lotes PO son CSV planos en [`../csv/`](../csv/) (enlazados desde el [README](../README.md)).  
+Regenerar: `python tecnico/scripts/generar_adjuntos_csv.py` (desde la raíz del plan).
 
-Reintegración: mapear filas por `Carpeta` + `Bloque` + `Clave` → diccionarios `.es.json` / menú ES; usar columna **Español (revisado)** (si vacía y Estado=Revisado, aceptar borrador).
+Reintegración: mapear filas por `Carpeta` + `Bloque` + `Clave` → `.es.json` / menú ES; usar **Español (revisado)** (si vacía y Estado=Revisado, aceptar borrador).
 
 | Doc | Uso |
 |-----|-----|

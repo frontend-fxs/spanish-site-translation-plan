@@ -1,6 +1,6 @@
 # Anexo — Routing, SEO y producto (ES)
 
-Complementa el [informe técnico](../INFORME-tecnico.md), el [informe PO](../../producto/INFORME-product-owner.md) y el CSV [fxstreet-es-pages.csv](./fxstreet-es-pages.csv).
+Complementa el [informe técnico](../INFORME-tecnico.md), el [README producto](../../README.md) y el CSV [fxstreet-es-pages.csv](./fxstreet-es-pages.csv).
 
 ## 1. Modelo de URLs
 

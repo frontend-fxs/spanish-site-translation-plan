@@ -1,6 +1,6 @@
 # Anexo — Inventario de diccionarios UI (Site)
 
-Documento de detalle técnico. Informes: [../INFORME-tecnico.md](../INFORME-tecnico.md) · [../../producto/INFORME-product-owner.md](../../producto/INFORME-product-owner.md).
+Documento de detalle técnico. Informes: [../INFORME-tecnico.md](../INFORME-tecnico.md) · [../../README.md](../../README.md).
 
 Fuente de verdad EN: clonar/traducir desde EN. Los `*.es.json` existentes = **revisión humana pendiente** (no marcar como cerrados).
 

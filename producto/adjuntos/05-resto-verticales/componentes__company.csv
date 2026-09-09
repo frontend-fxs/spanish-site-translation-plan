@@ -1,7 +1,0 @@
-﻿Carpeta,Bloque,Clave,Inglés (original),Español (borrador IA),Español (revisado),Estado,Comentarios
-componentes/company,company,empty,No company profiles are available at this time.,No hay perfiles de empresa disponibles en este momento.,,Pendiente,
-componentes/company,company,loadError,We could not load the company directory. Please try again later.,No se pudo cargar el directorio de empresas. Inténtelo de nuevo más tarde.,,Pendiente,
-componentes/company,company,pageSubtitle,Find out more about our content collaborators.,Descubre más sobre nuestros colaboradores de contenido.,,Pendiente,
-componentes/company,company,pageTitle,FXStreet companies,Empresas de FXStreet,,Pendiente,
-componentes/company,company,searchNoResults,"No companies match ""{query}"".","No hay empresas que coincidan con ""{query}"".",,Pendiente,
-componentes/company,company,searchPlaceholder,Search companies,Buscar empresas,,Pendiente,
