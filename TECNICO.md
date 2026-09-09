@@ -19,9 +19,12 @@
 | Área | Estado |
 |------|--------|
 | i18n modular `messages/{module}/{Namespace}.{locale}.json` | `[x]` |
-| Paridad keys EN↔ES (UI) | `[x]` keys · `[~]` copy humano |
+| Paridad keys EN↔ES (UI) | `[x]` keys · `[~]` copy humano · CI `pnpm i18n:parity` |
 | Calendario ES `/calendario-economico/…` + redirects | `[x]` |
 | Nav ES sin press-releases; legacy URLs saneadas | `[x]` |
+| Hardcodes UI → next-intl (a11y, newsletter Zod, schema app name, 404 mailto) | `[x]` |
+| `.env.example` con ejemplos EN/ES | `[x]` |
+| Charts number format política `en-US` documentada en código | `[x]` |
 | Inventario URLs por patrones (crawl) | `[x]` validado 2026-09-09 |
 | Abrir gates EN-only | **No** salvo orden PO |
 | CMS / Algolia / sitemaps cultura `es` | Fuera repo · bloqueante ops |
@@ -89,20 +92,9 @@ Doc Site: `messages/README.md`. Loader: ficheros ausentes se omiten (`Promise.al
 
 analysis-page, cryptocurrencies-page, forecast, assets-forecast, forecast-chart, macro-showcases, macro-showcases-sub-home (registrado + next-intl), premium, propinder, premium-terms-and-conditions, terms-conditions, privacy-policy, cookie-policy, prevention, advertising-model, how-we-score-reviews, how-fxstreet-uses-ai, youtube-videos-section, youtube, about-us, corporate-identity, showcases-variants, calendar-guide, commodities (editorial largo), rates-charts, equities (`editorialText` aún mezcla EN), forex-market-hours, fed-sentiment-index, world-interest-rates, central-banks, central-bank-detail, economic-indicator-detail, checklist-section, trade-war, key-technicals-table, contributors-table, company, author, brokers, broker-detail, economic-calendar, calendar-event, topic-page, profile, subscriptions, account.
 
-### Hardcodes detectados (sacar a i18n o traducir)
+### Hardcodes UI
 
-| Ubicación | Issue |
-|-----------|--------|
-| `rates-charts/header/assets-search.tsx` | `Search assets...` |
-| `widgets/cashback/index.tsx` | `Search broker...` |
-| `posts/expand-image.tsx` / `post-image-viewer.tsx` | aria ES fijo |
-| `sections/about-us/timeline.tsx` | Previous/Next years |
-| `primitives/pagination.tsx` / `breadcrumb.tsx` | aria EN |
-| `sections/rss-section-*.tsx` | `RSS Feed` |
-| `providers/turnstile-provider.tsx` | Security verification |
-| Newsletter Zod | validación EN |
-| `app/layout.tsx` | Schema.org app name EN |
-| `app/not-found.tsx` | mailto soporte (OK ES) |
+Pasados a next-intl / props i18n en rama Site (Shared.A11y, about-us story aria, Newsletter.invalidEmail, Shared.softwareApplicationName, NotFound mailto por locale). Rates assets-search y cashback search ya estaban en i18n.
 
 ### Reintegrar CSV PO
 
@@ -139,10 +131,10 @@ Un deploy por cultura. Fuente matriz: `Site/Build/site-deploy.yaml`.
 | Language switcher | `languages.ts` | Español → fxstreet.es |
 | Redirects | `Site/redirects.ts` | Locale-aware |
 
-**Formatos:** fechas UI con `Intl` · premium `NumberFormat` QA en ES · rates charts: propuesta mantener `en-US`.  
+**Formatos:** fechas UI con `Intl` · premium `NumberFormat` QA en ES · rates charts: **siempre `en-US`** (comentario en `convertToDecimalPlaces`).  
 **Terceros por locale:** emails soporte, OneSignal, Turnstile/aria, cookies.
 
-Checklist infra: `[x]` SiteLocale/helpers/es · `[x]` switcher · `[x]` matriz deploy · `[ ]` `.env.example` ES · `[ ]` gateway `Languages.es` GUID · `[ ]` CDN · `[ ]` smoke QA/PRO · `[ ]` formatos · `[ ]` política números charts · `[ ]` emails/OneSignal/consent.
+Checklist infra: `[x]` SiteLocale/helpers/es · `[x]` switcher · `[x]` matriz deploy · `[x]` `.env.example` EN/ES · `[ ]` gateway `Languages.es` GUID · `[ ]` CDN · `[ ]` smoke QA/PRO · `[x]` política números charts · `[~]` 404 mailto locale-aware · `[ ]` OneSignal/consent por locale.
 
 ---
 
@@ -193,7 +185,7 @@ Checklist C: todo `[ ]` hasta ops/editorial (contenido, brokers, directors, topi
 | Posts legacy raíz | `[ ]` → vertical correcta |
 | `/live-video/*`, curso-forex | `[D]` producto |
 
-Nav ES (`navigation-data-es.ts`): `[x]` URLs (sin press-releases; gold/oil; usdmxn; tools bajo calendario ES) · `[~]` labels humanos · `[ ]` patrón al añadir idiomas en `navigation-data.ts`.
+Nav ES (`navigation-data-es.ts`): `[x]` URLs · `[~]` labels humanos · `[x]` comentario de registro de locale en `navigation-data.ts`.
 
 SEO UI: `messages/seo/Seo.*` → revisión humana (lote 02).
 
@@ -234,7 +226,7 @@ pnpm --filter @operezol/scraper-cli start fxstreet-es \
 
 ### A. Diccionarios
 
-- `[x]` Modular + paridad keys · `[~]` revisión humana · `[x]` CashbackWidget / EditorialHighlightCard / SubHomeShowcases ES · keys BrokerShowcase/Header.propinder/PostListMultifeed/Seo.SubHomeShowcases · commodities/equities/macro/showcases · macro-showcases-sub-home next-intl · Forecasts.* · calendar-guide paths · rss education · `[ ]` CI diff EN vs locale · `[~]` hardcodes (arriba)
+- `[x]` Modular + paridad keys · `[~]` revisión humana · `[x]` componentes/keys listados arriba · `[x]` CI `pnpm i18n:parity` · `[x]` hardcodes a11y/newsletter/schema/mailto
 
 ### B–D. Infra / CMS / routing
 
@@ -264,8 +256,8 @@ Press · industry-news · home modules EN · newsletter · calendar speech/notif
 ### Orden de trabajo ES
 
 1. Cerrar `[D]` que afecten nav/scope (PO).  
-2. Paridad keys (hecho) + hardcodes.  
+2. Paridad keys + hardcodes Site (`[x]`).  
 3. Reintegrar CSV humanos (legal→…).  
-4. CMS+Algolia+sitemaps ∥ redirects pendientes.  
+4. CMS+Algolia+sitemaps ∥ redirects pendientes (landings SEO raíz).  
 5. QA F QA→PRO.  
 6. Congelar como plantilla idioma siguiente.
