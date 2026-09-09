@@ -1,0 +1,13 @@
+Lote: Calendario, rates y brókers
+Prioridad: Alta
+Filas: 1333
+Carpetas (CSV): 15
+
+Cómo usar:
+- Opción A: abrir `_TODAS_LAS_CARPETAS.csv` (todo el lote en un solo CSV).
+- Opción B: abrir el CSV de cada carpeta (mismo agrupado que el inventario).
+- Rellena la columna «Español (revisado)» y pon Estado = Revisado.
+- No borres la columna Clave.
+- Devuelve los CSV a la misma carpeta en Drive.
+
+Columnas: Carpeta | Bloque | Clave | Inglés | Español borrador | Español revisado | Estado | Comentarios

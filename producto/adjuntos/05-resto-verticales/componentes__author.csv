@@ -1,0 +1,9 @@
+﻿Carpeta,Bloque,Clave,Inglés (original),Español (borrador IA),Español (revisado),Estado,Comentarios
+componentes/author,author,empty,No author profiles are available at this time.,No hay perfiles de autor disponibles en este momento.,,Pendiente,
+componentes/author,author,fxstreetTeamTitle,FXStreet Team,Equipo FXStreet,,Pendiente,
+componentes/author,author,loadError,We could not load the author directory. Please try again later.,No se pudo cargar el directorio de autores. Inténtelo de nuevo más tarde.,,Pendiente,
+componentes/author,author,othersTitle,Others,Otros,,Pendiente,
+componentes/author,author,pageSubtitle,Find out more about our content authors.,Descubre más sobre nuestros autores de contenido.,,Pendiente,
+componentes/author,author,pageTitle,FXStreet authors,Autores de FXStreet,,Pendiente,
+componentes/author,author,searchNoResults,"No authors match ""{query}"".","No hay autores que coincidan con ""{query}"".",,Pendiente,
+componentes/author,author,searchPlaceholder,Search authors or companies,Buscar autores o empresas,,Pendiente,

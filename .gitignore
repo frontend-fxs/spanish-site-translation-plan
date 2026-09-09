@@ -1,0 +1,7 @@
+# Ignore local/OS junk only — CSV adjuntos must be committed
+.DS_Store
+Thumbs.db
+*.xlsx
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,364 @@
+{
+  "livePages": 67,
+  "livePatterns": 42,
+  "planRows": 87,
+  "planPatterns": 78,
+  "both": [
+    "/",
+    "/[seo-or-legacy-root]",
+    "/account/login",
+    "/analysis",
+    "/analysis/latest",
+    "/bonds",
+    "/brokers",
+    "/brokers/reviews",
+    "/calendario-economico",
+    "/commodities",
+    "/cryptocurrencies",
+    "/cryptocurrencies/news",
+    "/cryptocurrencies/rates-charts",
+    "/educacion/*",
+    "/education",
+    "/education/curso-forex/*",
+    "/education/latest",
+    "/equities",
+    "/info/[page]",
+    "/live-video/*",
+    "/markets/commodities/*",
+    "/markets/equities",
+    "/mexico",
+    "/news",
+    "/press-releases",
+    "/rates-charts",
+    "/rates-charts/chart",
+    "/rates-charts/chart-interactive",
+    "/rates-charts/chart/station",
+    "/rates-charts/forecast",
+    "/rates-charts/indicators",
+    "/rates-charts/indicators/technical-levels",
+    "/rates-charts/rates",
+    "/rates-charts/rates/*",
+    "/rss",
+    "/subscriptions",
+    "/technical-analysis/*",
+    "/transparency-translations"
+  ],
+  "onlyLive": [
+    {
+      "pattern": "/economic-calendar/country/[id]",
+      "hits": 3,
+      "example": "/economic-calendar/country/89d5f89c-a5d5-40cc-8690-9725de83504d"
+    },
+    {
+      "pattern": "/economic-calendar/fed-sentiment-index",
+      "hits": 1,
+      "example": "/economic-calendar/fed-sentiment-index"
+    },
+    {
+      "pattern": "/economic-calendar/forex-market-hours",
+      "hits": 1,
+      "example": "/economic-calendar/forex-market-hours"
+    },
+    {
+      "pattern": "/economic-calendar/world-interest-rates",
+      "hits": 1,
+      "example": "/economic-calendar/world-interest-rates"
+    }
+  ],
+  "onlyPlan": [
+    "/[root-dated-post]",
+    "/account/{signup|additional-data|manage-password|premium-checkout}",
+    "/analysis/[slug]",
+    "/analysis/feed",
+    "/author",
+    "/author/[slug]",
+    "/brokers/[slug]",
+    "/brokers/best",
+    "/brokers/best/[slug]",
+    "/brokers/cashback/not-available",
+    "/brokers/prop/[slug]",
+    "/brokers/reviews/[slug]",
+    "/calendario-economico/event/[slug]",
+    "/commodities/[slug]",
+    "/company",
+    "/company/[slug]",
+    "/cryptocurrencies/[slug]",
+    "/cryptocurrencies/industry-news",
+    "/cryptocurrencies/news/[slug]",
+    "/cryptocurrencies/news/feed",
+    "/currencies/[slug]",
+    "/economic-calendar",
+    "/economic-calendar/[slug]",
+    "/economic-calendar/event/[slug]",
+    "/education/[slug]",
+    "/education/feed",
+    "/events/strategy",
+    "/fundamental/tabla-tipos-interes",
+    "/macroeconomics/central-banks",
+    "/macroeconomics/central-banks/[slug]",
+    "/macroeconomics/economic-indicator/[slug]",
+    "/macroeconomics/trade-war",
+    "/news/[slug]",
+    "/news/feed",
+    "/press-releases/[slug]",
+    "/profile",
+    "/rates-charts/[slug]",
+    "/rates-charts/[slug]/forecast",
+    "/rates-charts/nzdusd/chart",
+    "/search"
+  ],
+  "livePatternsDetail": [
+    {
+      "pattern": "/",
+      "hits": 1,
+      "envs": "next",
+      "example": "/"
+    },
+    {
+      "pattern": "/[seo-or-legacy-root]",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/sitemap-all.xml"
+    },
+    {
+      "pattern": "/account/login",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/account/login"
+    },
+    {
+      "pattern": "/analysis",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/analysis"
+    },
+    {
+      "pattern": "/analysis/latest",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/analysis/latest"
+    },
+    {
+      "pattern": "/bonds",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/bonds"
+    },
+    {
+      "pattern": "/brokers",
+      "hits": 1,
+      "envs": "next",
+      "example": "/brokers"
+    },
+    {
+      "pattern": "/brokers/reviews",
+      "hits": 1,
+      "envs": "next",
+      "example": "/brokers/reviews"
+    },
+    {
+      "pattern": "/calendario-economico",
+      "hits": 1,
+      "envs": "next",
+      "example": "/calendario-economico"
+    },
+    {
+      "pattern": "/commodities",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/commodities"
+    },
+    {
+      "pattern": "/cryptocurrencies",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/cryptocurrencies"
+    },
+    {
+      "pattern": "/cryptocurrencies/news",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/cryptocurrencies/news"
+    },
+    {
+      "pattern": "/cryptocurrencies/rates-charts",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/cryptocurrencies/rates-charts"
+    },
+    {
+      "pattern": "/economic-calendar/country/[id]",
+      "hits": 3,
+      "envs": "unknown",
+      "example": "/economic-calendar/country/89d5f89c-a5d5-40cc-8690-9725de83504d"
+    },
+    {
+      "pattern": "/economic-calendar/fed-sentiment-index",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/economic-calendar/fed-sentiment-index"
+    },
+    {
+      "pattern": "/economic-calendar/forex-market-hours",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/economic-calendar/forex-market-hours"
+    },
+    {
+      "pattern": "/economic-calendar/world-interest-rates",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/economic-calendar/world-interest-rates"
+    },
+    {
+      "pattern": "/educacion/*",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/educacion"
+    },
+    {
+      "pattern": "/education",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/education"
+    },
+    {
+      "pattern": "/education/curso-forex/*",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/education/curso-forex"
+    },
+    {
+      "pattern": "/education/latest",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/education/latest"
+    },
+    {
+      "pattern": "/equities",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/equities"
+    },
+    {
+      "pattern": "/info/[page]",
+      "hits": 15,
+      "envs": "sitefinity|unknown",
+      "example": "/info/about-us"
+    },
+    {
+      "pattern": "/live-video/*",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/live-video"
+    },
+    {
+      "pattern": "/markets/commodities/*",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/markets/commodities"
+    },
+    {
+      "pattern": "/markets/equities",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/markets/equities"
+    },
+    {
+      "pattern": "/mexico",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/mexico"
+    },
+    {
+      "pattern": "/news",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/news"
+    },
+    {
+      "pattern": "/press-releases",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/press-releases"
+    },
+    {
+      "pattern": "/rates-charts",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts"
+    },
+    {
+      "pattern": "/rates-charts/chart",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/chart"
+    },
+    {
+      "pattern": "/rates-charts/chart-interactive",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/chart-interactive"
+    },
+    {
+      "pattern": "/rates-charts/chart/station",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/chart/station"
+    },
+    {
+      "pattern": "/rates-charts/forecast",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/forecast"
+    },
+    {
+      "pattern": "/rates-charts/indicators",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/indicators"
+    },
+    {
+      "pattern": "/rates-charts/indicators/technical-levels",
+      "hits": 2,
+      "envs": "sitefinity",
+      "example": "/rates-charts/indicators/technical-levels"
+    },
+    {
+      "pattern": "/rates-charts/rates",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/rates-charts/rates"
+    },
+    {
+      "pattern": "/rates-charts/rates/*",
+      "hits": 2,
+      "envs": "sitefinity|unknown",
+      "example": "/rates-charts/rates/crosses/gbp"
+    },
+    {
+      "pattern": "/rss",
+      "hits": 1,
+      "envs": "unknown",
+      "example": "/rss"
+    },
+    {
+      "pattern": "/subscriptions",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/subscriptions"
+    },
+    {
+      "pattern": "/technical-analysis/*",
+      "hits": 5,
+      "envs": "sitefinity",
+      "example": "/technical-analysis/elliott-wave"
+    },
+    {
+      "pattern": "/transparency-translations",
+      "hits": 1,
+      "envs": "sitefinity",
+      "example": "/transparency-translations"
+    }
+  ]
+}
