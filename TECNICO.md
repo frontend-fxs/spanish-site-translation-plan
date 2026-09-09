@@ -18,7 +18,7 @@
 
 | Área | Estado |
 |------|--------|
-| i18n modular `messages/{module}/{Namespace}.{locale}.json` | `[x]` |
+| i18n colocated `components/{name}/{name}.{locale}.json` (patrón Ana) | `[x]` |
 | Paridad keys EN↔ES (UI) | `[x]` keys · `[~]` copy humano · CI `pnpm i18n:parity` |
 | Calendario ES `/calendario-economico/…` + redirects | `[x]` |
 | Nav ES sin press-releases; legacy URLs saneadas | `[x]` |
@@ -58,43 +58,25 @@ Fuente gates: `packages/lib/server-only/services/show-component-service.ts` + pa
 
 ---
 
-## 3. Arquitectura i18n
+## 3. Arquitectura i18n (patrón Ana — colocation)
 
 | Capa | Ubicación | Registro |
 |------|-----------|----------|
-| Base / chrome | `Site/messages/{module}/{Namespace}.{locale}.json` | `i18n/message-modules.ts` |
-| Features | `packages/ui/src/components/{name}/{name}.{locale}.json` | `loadComponentMessages` en `i18n/request.ts` |
+| Features + chrome | `packages/ui/src/components/{name}/{name}.{locale}.json` | `i18n/colocated-message-modules.ts` → `loadComponentMessages` |
+| Primitives | `packages/ui/src/primitives/{name}.{locale}.json` | `loadPrimitiveMessages` |
 | Server-only | `packages/lib/server-only/rss/rss-feed.{locale}.json` | `loadServerOnlyMessages` |
 | Nav (no JSON) | `navigation-data-{en,es}.ts` | `navigation-data.ts` |
 
-Doc Site: `messages/README.md`. Loader: ficheros ausentes se omiten (`Promise.allSettled`).
+**Convención:** namespace = nombre de carpeta (kebab). Ej. `broker-review`, `header`, `seo`, `broker-listing`. `useTranslations('header')`. Badge premium = `premium-badge` (no choca con landing `premium`). CTAs brokers = `brokers.common`.
 
-### Módulos base (`messages/`)
+Doc Site: `messages/README.md` (legado; árbol `messages/{module}/` retirado). Loader: ficheros ausentes se omiten (`Promise.allSettled`). Hoy el registry se carga entero; la colocation habilita lazy por ruta más adelante.
 
-| Módulo | Namespaces |
-|--------|------------|
-| `layout` | Header, Footer, FooterDisclaimer, Navigation, LanguageSelector, Sidebar |
-| `shared` | Common, Shared, Share, Sponsored, AdvertisementDialog, Greybox, DisclaimerSection, CalendarDisclaimer, OneSignal |
-| `errors` | NotFound, Error500, ServiceNotAvailable |
-| `seo` | Seo |
-| `home` | HomePage, MoreNewsSection, InDeepAnalysisSection, LiveCoverageSection, WeeklyForecastSection, EditorialHighlight*, EducationSection, CryptocurrenciesSection, StocksSection, IndustryNewsSection, BestBrokers*, AuthorSection, CashbackWidget, SubHomeShowcases, Newsletter |
-| `posts` | PostMetadata, PostAuthorInfo, PostListMultifeed, PostVerifiedTranslation, Paywall |
-| `brokers` | Brokers, BrokerListing, BrokerReview, BrokerReviewsSubHome, BrokerShowcase |
-| `directory` | Author, Company, BecomeContributor, ContactUs |
-| `search` | Search, Algolia |
-| `editorial` | EditorialGuidelines, EthicalCode, TransparencyTranslations, PressReleases, CryptoIndustryNews, Premium |
-
-**Paridad:** 59× `.en.json` / 59× `.es.json` base · componentes listados en `request.ts` con pareja ES · RSS education keys OK.  
-**Eliminado:** dead entry `rates-charts-sub-home` de `request.ts`.  
+**Paridad:** `pnpm i18n:parity` · revisión humana de copy ES pendiente.  
 **Alineado:** `rates-charts` → `Forecasts.*` · `calendar-guide` linkPaths país → `/calendario-economico/…`.
-
-### Componentes UI (`*.{locale}.json`) — todos con ES; revisión humana pendiente
-
-analysis-page, cryptocurrencies-page, forecast, assets-forecast, forecast-chart, macro-showcases, macro-showcases-sub-home (registrado + next-intl), premium, propinder, premium-terms-and-conditions, terms-conditions, privacy-policy, cookie-policy, prevention, advertising-model, how-we-score-reviews, how-fxstreet-uses-ai, youtube-videos-section, youtube, about-us, corporate-identity, showcases-variants, calendar-guide, commodities (editorial largo), rates-charts, equities (`editorialText` aún mezcla EN), forex-market-hours, fed-sentiment-index, world-interest-rates, central-banks, central-bank-detail, economic-indicator-detail, checklist-section, trade-war, key-technicals-table, contributors-table, company, author, brokers, broker-detail, economic-calendar, calendar-event, topic-page, profile, subscriptions, account.
 
 ### Hardcodes UI
 
-Pasados a next-intl / props i18n en rama Site (Shared.A11y, about-us story aria, Newsletter.invalidEmail, Shared.softwareApplicationName, NotFound mailto por locale). Rates assets-search y cashback search ya estaban en i18n.
+Pasados a next-intl / props i18n en rama Site (a11y, newsletter Zod, schema app name, 404 mailto por locale). Rates assets-search y cashback search ya estaban en i18n.
 
 ### Reintegrar CSV PO
 
