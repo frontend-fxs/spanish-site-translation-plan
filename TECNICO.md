@@ -5,9 +5,8 @@
 | **Para** | Engineering / Tech lead |
 | **Producto (1 página)** | [README.md](./README.md) |
 | **Rama Site** | `chore/modular-messages-i18n` |
-| **CSV PO** | [csv/](./csv/) · regenerar: `python scripts/generar_adjuntos_csv.py` |
-| **Crawl** | [crawl/fxstreet-es-live.csv](./crawl/fxstreet-es-live.csv) (67 URLs, 2026-09-09) |
-| **Histórico scrape** | [crawl/fxstreet-es-pages.csv](./crawl/fxstreet-es-pages.csv) |
+| **CSV PO** | [csv/](./csv/) |
+| **Crawl** | Validado 2026-09-09 (`web-scraper-toolkit` / `fxstreet-es`, 67 URLs) — artefactos no guardados en este repo |
 
 **Modelo:** un locale por deploy/dominio (`NEXT_PUBLIC_LOCALE`), no prefijos `/es/…`. EN = `fxstreet.com`, ES = `fxstreet.es`. UI = next-intl JSON; editorial = gateway/CMS por cultura. Copy ES del repo = **borrador IA** hasta revisión humana ([README](./README.md) + CSV).
 
@@ -205,7 +204,7 @@ SEO UI: `messages/seo/Seo.*` → revisión humana (lote 02).
 | Campo | Valor |
 |-------|--------|
 | Fecha | 2026-09-09 |
-| Tool | `web-scraper-toolkit` preset `fxstreet-es` |
+| Tool | `web-scraper-toolkit` preset `fxstreet-es` (artefactos CSV no versionados aquí) |
 | Origen | `https://www.fxstreet.es/` |
 | Resultado | 67 URLs · ~40 patrones (sin ruido `cdn-cgi`) |
 
@@ -223,13 +222,12 @@ educacion→education · mexico→usdmxn · live-video `[D]` · curso-forex `[D]
 
 `/cdn-cgi/*` · paths mal formados `/https:/…`.
 
-Reproducir crawl:
+Reproducir (en el toolkit, no en este repo):
 
 ```bash
 pnpm --filter @operezol/scraper-cli start fxstreet-es \
   -o <out.csv> -d 250 --checkpoint-every 30
 ```
-
 ---
 
 ## 8. Checklist ejecución (vivo)
