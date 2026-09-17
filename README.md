@@ -10,6 +10,8 @@ El español que encontrarás es un **borrador automático**. La idea es **releer
 
 `fxstreet.es` será un **espejo del site en inglés**, con el mismo alcance de páginas y secciones, **excepto** las que el código deja solo en inglés. Esas **no se publican en español** y **no hace falta traducirlas**.
 
+**Path localizado (única excepción de URL):** la herramienta del calendario usa `/calendario-economico`. El resto de páginas del calendario (p. ej. `/economic-calendar/world-interest-rates`) mantienen el path en inglés, como el resto del site.
+
 | Incluido en español | Fuera de alcance (solo inglés / no traducir) |
 |---------------------|-----------------------------------------------|
 | Inicio, noticias, análisis, educación, cripto | Press releases |
@@ -21,7 +23,7 @@ El español que encontrarás es un **borrador automático**. La idea es **releer
 
 Si falta contenido editorial en una sección incluida, **se oculta del menú** hasta que Contenidos la tenga lista.
 
-Al contrastar el scrap de la web española actual (Sitefinity) con el Site Next, aparecen **páginas o familias de URL que no forman parte de ese espejo**. Os pedimos decisión en la sección final de este documento.
+Criterio de **migración de URLs** (provisional, 15/09/2026) y la primera limpieza de URLs ES: ver [§ Migración EN↔ES](#migración-enes-criterio-provisional).
 
 ---
 
@@ -75,6 +77,21 @@ Antes de empezar el lote 01, **Traducciones** define la variante (España, LatAm
 
 ---
 
+## Última actualización del borrador (10/09/2026)
+
+Antes de pasaros las hojas hemos hecho una revisión automática del borrador español y hemos corregido lo siguiente. Si ya habíais abierto una versión anterior, **estas filas han cambiado** y conviene releerlas.
+
+| Qué pasaba | Dónde | Lote |
+|------------|-------|------|
+| Los acentos se habían perdido al guardar el fichero y salían como `?` (`?nete a FXStreet Cashback`, `Tama?o medio de la posici?n`, `Pron?stico`). Los hemos reescrito | Widget de cashback, tarjeta de pronóstico | 04, 05 |
+| Los acentos salían con caracteres extraños (`reuniÃ³n`, `Â¿QuÃ©`). Corregidos en 372 textos | Fichas de bancos centrales | 05 |
+| El borrador seguía en inglés | Título de la página de gráficos, descripción y palabras clave SEO del Fed Sentiment Index, «Dollar Index» y «Trade Now» del menú | 02, 04 |
+| Faltaba un texto de accesibilidad que la web leía en bruto | Botón de información de «Verificado en condiciones reales» en las reseñas de brókers | 04 |
+
+Son correcciones del **borrador**, no decisiones de estilo: si preferís otra redacción, cambiadla con normalidad en **Español (revisado)**.
+
+---
+
 ## Hojas de cálculo (lotes)
 
 Están en esta carpeta. Prioridad **alta** primero; para el lanzamiento hacen falta al menos los lotes **01 a 04**.
@@ -87,6 +104,8 @@ Están en esta carpeta. Prioridad **alta** primero; para el lanzamiento hacen fa
 | 04 | Calendario, gráficos y brókers | Alta | `04-calendario-rates-brokers` | Traducciones |
 | 05 | Resto de secciones e inicio | Media | `05-resto-verticales` | Traducciones |
 | 06 | RSS | Media | `06-rss` | Traducciones |
+
+Además: `mapeado-paginas.xlsx` — mapa **EN URL | ES URL | page type | status** (direct match / EN only / ES only), con comprobación HTTP live (`exists EN/ES`) y resumen arriba. Tráfico 12m pendiente de Data. Regenerar: `python verify-and-rebuild-mapeado.py`.
 
 | Seguimiento | 01 | 02 | 03 | 04 | 05 | 06 |
 |-------------|----|----|----|----|----|----|
@@ -105,7 +124,8 @@ Cuando **todos** los lotes previstos estén listos y validados, nos lo pasáis *
 - [ ] El menú en español no enlaza a secciones solo inglés  
 - [ ] Las secciones incluidas tienen contenido, o están ocultas a propósito  
 - [ ] Habéis hecho una pasada rápida de la web en español con el equipo  
-- [ ] Habéis decidido qué hacer con las páginas Sitefinity fuera del espejo (sección final)
+- [ ] Criterio de migración EN↔ES cerrado (o excepciones EN-only acordadas)  
+- [ ] URLs ES-only pendientes: dictamen SEO / Data / Mkt / Contenidos
 
 | Aprobación | Nombre | Resultado | Fecha |
 |------------|--------|-----------|-------|
@@ -113,35 +133,73 @@ Cuando **todos** los lotes previstos estén listos y validados, nos lo pasáis *
 
 ---
 
-## Páginas de la web española actual fuera del espejo Next
+## Migración EN↔ES (criterio provisional)
 
-Al revisar el **scrap de fxstreet.es (Sitefinity)** frente a las rutas del **Site Next** (espejo del inglés), estas familias **existen hoy en español** pero **no tienen equivalente** en el alcance definido arriba (o solo existen como legado / SEO antiguo).
+Fuente: respuesta de producto **no definitiva** (15/09/2026) + mapa `csv/mapeado-paginas.xlsx`.
 
-Os pedimos indicar, para cada una, qué hacer al sustituir Sitefinity por Next:
+| Caso en el mapa | Acción provisional | Quién cierra |
+|-----------------|--------------------|--------------|
+| **direct match** | **Migrar** (espejo EN → ES) | Ingeniería / lanzamiento |
+| **EN only** | **Migrar** salvo excepciones de negocio (p. ej. reviews, showcases, y lo ya gated solo EN: press, industry-news, etc.) | **Negocio / PO** (lista de excepciones) |
+| **ES only** | **No migrar a ciegas** — analizar si tienen sentido | **SEO + Data + Mkt + Contenidos** |
 
-- **Redirigir** a una URL concreta del nuevo site  
-- **No migrar** (la URL dejará de existir o responderá 404)  
-- **Más adelante** (fuera de este lanzamiento)
+Detalle del mapa y check HTTP: `csv/mapeado-paginas.xlsx` (regenerar con `python verify-and-rebuild-mapeado.py`). Tráfico 12 meses en filas EN/ES only: **pendiente de Data**.
 
-| # | Qué hay hoy en Sitefinity ES | Ejemplos / patrón | ¿Qué decidís? |
-|---|------------------------------|-------------------|---------------|
-| 1 | **Live video** (vertical completa) | `/live-video`, `/live-video/…` (~10 URLs únicas en el scrap) | ☐ Redirigir a: ________ · ☐ No migrar · ☐ Más adelante |
-| 2 | **Curso Forex** estructurado (multi-unidad) | `/education/curso-forex/…` y legado `/educacion/…` | ☐ Redirigir a educación · ☐ No migrar · ☐ Más adelante |
-| 3 | **Hub México** | `/mexico` | ☐ Redirigir a `/currencies/usdmxn` · ☐ Otra: ________ · ☐ No migrar · ☐ Más adelante |
-| 4 | **Landings SEO de brókers en la raíz** | p. ej. `/beginners-brokers-australia`, `/hedging-brokers-…`, `/mt5-brokers-…` (~26 URLs) | ☐ Redirigir a `/brokers/best/…` si existe · ☐ No migrar · ☐ Más adelante |
-| 5 | **Análisis técnico legado** | `/technical-analysis/…` (elliott, soporte/resistencia, etc.) | ☐ Redirigir a `/rates-charts/indicators` · ☐ No migrar · ☐ Más adelante |
-| 6 | **Bonds** | `/bonds` | ☐ Redirigir a: ________ · ☐ No migrar · ☐ Más adelante |
-| 7 | **Empleo** | `/info/jobs` | ☐ Redirigir a about-us / externo · ☐ No migrar · ☐ Más adelante |
-| 8 | **Organismos reguladores** | `/brokers/organismos-reguladores` | ☐ Redirigir a `/brokers` · ☐ No migrar · ☐ Más adelante |
-| 9 | **Events / strategy** | `/events/strategy` | ☐ Redirigir a: ________ · ☐ No migrar · ☐ Más adelante |
-| 10 | **Tabla tipos de interés (legado)** | `/fundamental/tabla-tipos-interes` | ☐ Redirigir a `/economic-calendar/world-interest-rates` · ☐ No migrar · ☐ Más adelante |
-| 11 | **Publicidad (URL antigua)** | `/info/advertising-and-sponsorship` | ☐ Redirigir a `/info/advertising-model` · ☐ No migrar · ☐ Más adelante |
-| 12 | **Listado forex legado** | `/brokers/brokers-forex` | ☐ Redirigir a `/brokers` · ☐ No migrar · ☐ Más adelante |
-| 13 | **Posts en la raíz** (sin vertical news/analysis) | p. ej. `/pronostico-del-precio-del-…-2026…` | ☐ Redirigir al vertical correcto · ☐ No migrar · ☐ Más adelante |
-| 14 | **Eventos de calendario por GUID** | `/calendario-economico/event/{guid}` (en Next van por slug) | ☐ Mapear/redirigir a `/calendario-economico/event/{slug}` · ☐ No migrar · ☐ Más adelante |
+### Primera limpieza — URLs ES
 
-**Nota:** Press releases e industry-news aparecen también en el scrap ES, pero ya quedan **fuera de alcance** (solo inglés). No hace falta decidirlas de nuevo aquí.
+Tras el scrap + verificación live, se separaron dos grupos.
 
-| Decisión PO (esta sección) | Nombre | Fecha |
-|-----------------------------|--------|-------|
-| | | |
+#### A. Fuera del backlog ES-only (vienen con el espejo EN / Next)
+
+Rutas que en el mapa apuntaban a `fxstreet.es` pero **hoy no viven en Sitefinity ES** (404 live). No requieren dictamen SEO como “página española actual”: al migrar el match EN (o la página Next) aparecerán en ES si entran en alcance.
+
+| URL ES (limpia / no analizar como legado ES) |
+|-----------------------------------------------|
+| `https://www.fxstreet.es/account/premium-checkout` |
+| `https://www.fxstreet.es/account/signup` |
+| `https://www.fxstreet.es/brokers/cashback/not-available` |
+| `https://www.fxstreet.es/commodities` |
+| `https://www.fxstreet.es/economic-calendar/fed-sentiment-index` |
+| `https://www.fxstreet.es/equities` |
+| `https://www.fxstreet.es/info/advertising-model` |
+| `https://www.fxstreet.es/info/cookie-policy` |
+| `https://www.fxstreet.es/info/how-fxstreet-uses-ai` |
+| `https://www.fxstreet.es/info/how-we-score-reviews` |
+| `https://www.fxstreet.es/info/jobs` |
+| `https://www.fxstreet.es/info/premium` |
+| `https://www.fxstreet.es/info/premium-terms-and-conditions` |
+| `https://www.fxstreet.es/info/privacy-policy` |
+| `https://www.fxstreet.es/macroeconomics/trade-war` |
+
+#### B. Pendiente análisis SEO / Data / Mkt / Contenidos (ES only / legado)
+
+Estas **sí** hay que decidir (redirigir / no migrar / más adelante) con tráfico y sentido de negocio.
+
+| URL o patrón ES | Notas |
+|-----------------|-------|
+| `https://www.fxstreet.es/live-video` | Vertical viva en ES; 404 en EN |
+| `https://www.fxstreet.es/live-video/latest` | idem |
+| `https://www.fxstreet.es/live-video/shows` | idem |
+| `https://www.fxstreet.es/education/curso-forex` | Curso multi-unidad; no en Next |
+| `https://www.fxstreet.es/mexico` | Hub ES-only |
+| `https://www.fxstreet.es/rates-charts/chart/station` | Legado rates |
+| `https://www.fxstreet.es/rates-charts/rates/majors` | Legado rates |
+| `https://www.fxstreet.es/technical-analysis/support-resistance/pivot-points` | Legado TA |
+| `https://www.fxstreet.es/brokers/brokers-forex` | Legado (404 live en check) |
+| `https://www.fxstreet.es/brokers/organismos-reguladores` | Legado (404 live en check) |
+| `https://www.fxstreet.es/fundamental/tabla-tipos-interes` | Legado (404 live en check) |
+| `https://www.fxstreet.es/educacion/*` | Typo / path histórico |
+| `https://www.fxstreet.es/education/curso-forex/*` | Unidades del curso |
+| `https://www.fxstreet.es/rates-charts/[slug]/chart` | Patrón legado chart por activo |
+
+| Dictamen (grupo B) | Equipo | Decisión | Fecha |
+|--------------------|--------|----------|-------|
+| | SEO / Data / Mkt / CNT | ☐ Redirigir · ☐ No migrar · ☐ Más adelante | |
+
+#### C. Cerrado SEO — landings bróker en raíz (17/09/2026)
+
+Dictamen Aitor (SEO): si una URL rota tiene **paralela funcional** en Next, **301**. Las ~26 landings `fxstreet.es/{slug}` (p. ej. `/beginners-brokers-australia`, `/beginners-brokers-bangladesh`) van a `/brokers/best/{slug}`. Código: `Site/redirects.ts` (`seoBrokerRootLandingRedirects`). Si el showcase no existe en CMS, `getBrokerBest` sigue a `/brokers` (404) o `/brokers/best` (410).
+
+| Excepciones EN-only (no migrar a ES) | Negocio / PO | Fecha |
+|-------------------------------------|--------------|-------|
+| (reviews, showcases, … — por definir) | | |

@@ -1,0 +1,80 @@
+Vertical,Nombre,Path canónico ES,URL QA,Tipo,En menú ES,Alias EN (mismo template),Notas
+Inicio,Home,/,https://qa-s-oriol.fxstreet.com/,estática,Sí,,Sin bloques EN-only (More news / In-deep / Best brokers yearly / newsletter)
+Noticias,Listado noticias,/news,https://qa-s-oriol.fxstreet.com/news,estática,Sí,,
+Noticias,Detalle noticia,/news/[slug],https://qa-s-oriol.fxstreet.com/news/[slug],dinámica,Sí,,Usar un slug vivo del CMS ES
+Noticias,Feed noticias,/news/feed,https://qa-s-oriol.fxstreet.com/news/feed,estática,No,,Plantilla feed
+Análisis,Listado análisis,/analysis,https://qa-s-oriol.fxstreet.com/analysis,estática,Sí,,
+Análisis,Últimos análisis,/analysis/latest,https://qa-s-oriol.fxstreet.com/analysis/latest,estática,Sí,,
+Análisis,Detalle análisis,/analysis/[slug],https://qa-s-oriol.fxstreet.com/analysis/[slug],dinámica,Sí,,Usar un slug vivo del CMS ES
+Análisis,Feed análisis,/analysis/feed,https://qa-s-oriol.fxstreet.com/analysis/feed,estática,No,,Plantilla feed
+Educación,Listado educación,/education,https://qa-s-oriol.fxstreet.com/education,estática,Sí,,
+Educación,Detalle educación,/education/[slug],https://qa-s-oriol.fxstreet.com/education/[slug],dinámica,Sí,,Usar un slug vivo del CMS ES
+Educación,Feed educación,/education/feed,https://qa-s-oriol.fxstreet.com/education/feed,estática,No,,Plantilla feed
+Cripto,Hub criptomonedas,/cryptocurrencies,https://qa-s-oriol.fxstreet.com/cryptocurrencies,estática,Sí,,Industry news no forma parte de ES
+Cripto,Ficha cripto,/cryptocurrencies/[slug],https://qa-s-oriol.fxstreet.com/cryptocurrencies/[slug],dinámica,Sí,,Ej. bitcoin / ethereum si el CMS ES los sirve
+Cripto,Noticias cripto,/cryptocurrencies/news,https://qa-s-oriol.fxstreet.com/cryptocurrencies/news,estática,Sí,,
+Cripto,Detalle noticia cripto,/cryptocurrencies/news/[slug],https://qa-s-oriol.fxstreet.com/cryptocurrencies/news/[slug],dinámica,Sí,,Usar un slug vivo del CMS ES
+Cripto,Feed noticias cripto,/cryptocurrencies/news/feed,https://qa-s-oriol.fxstreet.com/cryptocurrencies/news/feed,estática,No,,Plantilla feed
+Mercados,Materias primas,/commodities,https://qa-s-oriol.fxstreet.com/commodities,estática,Sí,,
+Mercados,Ficha materia prima (oro),/commodities/gold,https://qa-s-oriol.fxstreet.com/commodities/gold,estática,Sí,,Slug inglés
+Mercados,Ficha materia prima (petróleo),/commodities/oil,https://qa-s-oriol.fxstreet.com/commodities/oil,estática,Sí,,Slug inglés
+Mercados,Ficha materia prima,/commodities/[slug],https://qa-s-oriol.fxstreet.com/commodities/[slug],dinámica,Sí,,Otras fichas CMS
+Mercados,Acciones,/equities,https://qa-s-oriol.fxstreet.com/equities,estática,Sí,,
+Mercados,Ficha divisa,/currencies/[slug],https://qa-s-oriol.fxstreet.com/currencies/[slug],dinámica,Sí,,Ej. /currencies/eur-usd si el CMS ES lo sirve
+Calendario,Calendario (home),/calendario-economico,https://qa-s-oriol.fxstreet.com/calendario-economico,estática,Sí,/economic-calendar,Canónico ES; el path EN sirve el mismo template
+Calendario,Tipos de interés mundiales,/calendario-economico/world-interest-rates,https://qa-s-oriol.fxstreet.com/calendario-economico/world-interest-rates,estática,Sí,/economic-calendar/world-interest-rates,Slug sin traducir
+Calendario,Horario mercado forex,/calendario-economico/forex-market-hours,https://qa-s-oriol.fxstreet.com/calendario-economico/forex-market-hours,estática,Sí,/economic-calendar/forex-market-hours,Slug sin traducir
+Calendario,Fed Sentiment Index,/calendario-economico/fed-sentiment-index,https://qa-s-oriol.fxstreet.com/calendario-economico/fed-sentiment-index,estática,Sí,/economic-calendar/fed-sentiment-index,Slug sin traducir
+Calendario,Calendario Estados Unidos,/calendario-economico/united-states,https://qa-s-oriol.fxstreet.com/calendario-economico/united-states,estática,Sí,/economic-calendar/united-states,Incluye guía de país
+Calendario,Calendario Canadá,/calendario-economico/canada,https://qa-s-oriol.fxstreet.com/calendario-economico/canada,estática,Sí,/economic-calendar/canada,Incluye guía de país
+Calendario,Calendario Reino Unido,/calendario-economico/united-kingdom,https://qa-s-oriol.fxstreet.com/calendario-economico/united-kingdom,estática,Sí,/economic-calendar/united-kingdom,Incluye guía de país
+Calendario,Calendario Australia,/calendario-economico/australia,https://qa-s-oriol.fxstreet.com/calendario-economico/australia,estática,Sí,/economic-calendar/australia,Incluye guía de país
+Calendario,Evento de calendario,/calendario-economico/event/[slug],https://qa-s-oriol.fxstreet.com/calendario-economico/event/[slug],dinámica,Sí,/economic-calendar/event/[slug],Slug = id de evento (UUID)
+Macro,Bancos centrales,/macroeconomics/central-banks,https://qa-s-oriol.fxstreet.com/macroeconomics/central-banks,estática,Sí,,Path inglés
+Macro,Ficha banco central,/macroeconomics/central-banks/[slug],https://qa-s-oriol.fxstreet.com/macroeconomics/central-banks/[slug],dinámica,Sí,,Ej. fed / ecb / boj
+Macro,Indicador económico,/macroeconomics/economic-indicator/[slug],https://qa-s-oriol.fxstreet.com/macroeconomics/economic-indicator/[slug],dinámica,Sí,,Usar un slug vivo
+Macro,Guerra comercial,/macroeconomics/trade-war,https://qa-s-oriol.fxstreet.com/macroeconomics/trade-war,estática,Sí,,
+Tipos y gráficos,Hub rates,/rates-charts,https://qa-s-oriol.fxstreet.com/rates-charts,estática,Sí,,
+Tipos y gráficos,Gráfico,/rates-charts/chart,https://qa-s-oriol.fxstreet.com/rates-charts/chart,estática,Sí,,
+Tipos y gráficos,Gráfico interactivo,/rates-charts/chart-interactive,https://qa-s-oriol.fxstreet.com/rates-charts/chart-interactive,estática,Sí,,
+Tipos y gráficos,Pronóstico,/rates-charts/forecast,https://qa-s-oriol.fxstreet.com/rates-charts/forecast,estática,Sí,,
+Tipos y gráficos,Tipos,/rates-charts/rates,https://qa-s-oriol.fxstreet.com/rates-charts/rates,estática,Sí,,
+Tipos y gráficos,Indicadores,/rates-charts/indicators,https://qa-s-oriol.fxstreet.com/rates-charts/indicators,estática,Sí,,
+Tipos y gráficos,Ficha activo,/rates-charts/[slug],https://qa-s-oriol.fxstreet.com/rates-charts/[slug],dinámica,Sí,,Usar un slug vivo (ej. eurusd)
+Tipos y gráficos,Pronóstico de activo,/rates-charts/[slug]/forecast,https://qa-s-oriol.fxstreet.com/rates-charts/[slug]/forecast,dinámica,Sí,,
+Brókers,Listado brókers,/brokers,https://qa-s-oriol.fxstreet.com/brokers,estática,Sí,,
+Brókers,Ficha bróker,/brokers/[slug],https://qa-s-oriol.fxstreet.com/brokers/[slug],dinámica,Sí,,Usar un slug vivo
+Brókers,Reseñas,/brokers/reviews,https://qa-s-oriol.fxstreet.com/brokers/reviews,estática,Sí,,
+Brókers,Detalle reseña,/brokers/reviews/[slug],https://qa-s-oriol.fxstreet.com/brokers/reviews/[slug],dinámica,Sí,,Usar un slug vivo
+Brókers,Mejores brókers,/brokers/best,https://qa-s-oriol.fxstreet.com/brokers/best,estática,No,,Fuera del megamenú ES; la plantilla sí carga
+Brókers,Showcase mejores brókers,/brokers/best/[slug],https://qa-s-oriol.fxstreet.com/brokers/best/[slug],dinámica,No,,Fuera del megamenú ES
+Brókers,Prop firm,/brokers/prop/[slug],https://qa-s-oriol.fxstreet.com/brokers/prop/[slug],dinámica,No,,Fuera del megamenú ES
+Brókers,Cashback no disponible,/brokers/cashback/not-available,https://qa-s-oriol.fxstreet.com/brokers/cashback/not-available,estática,No,,
+Autores,Directorio autores,/author,https://qa-s-oriol.fxstreet.com/author,estática,Sí,,
+Autores,Ficha autor,/author/[slug],https://qa-s-oriol.fxstreet.com/author/[slug],dinámica,Sí,,Usar un slug vivo
+Compañía,Directorio compañías,/company,https://qa-s-oriol.fxstreet.com/company,estática,Sí,,
+Compañía,Ficha compañía,/company/[slug],https://qa-s-oriol.fxstreet.com/company/[slug],dinámica,Sí,,Usar un slug vivo
+Cuenta,Login,/account/login,https://qa-s-oriol.fxstreet.com/account/login,estática,Sí,,
+Cuenta,Registro,/account/signup,https://qa-s-oriol.fxstreet.com/account/signup,estática,Sí,,
+Cuenta,Datos adicionales,/account/additional-data,https://qa-s-oriol.fxstreet.com/account/additional-data,estática,No,,Tras login
+Cuenta,Gestionar contraseña,/account/manage-password,https://qa-s-oriol.fxstreet.com/account/manage-password,estática,No,,Tras login
+Cuenta,Checkout premium,/account/premium-checkout,https://qa-s-oriol.fxstreet.com/account/premium-checkout,estática,No,,Puede redirigir a login
+Cuenta,Perfil,/profile,https://qa-s-oriol.fxstreet.com/profile,estática,No,,Tras login
+Cuenta,Suscripciones,/subscriptions,https://qa-s-oriol.fxstreet.com/subscriptions,estática,No,,Tras login
+Búsqueda,Búsqueda,/search,https://qa-s-oriol.fxstreet.com/search,estática,Sí,,Algolia ES pendiente de contenido
+Legal,Quiénes somos,/info/about-us,https://qa-s-oriol.fxstreet.com/info/about-us,estática,Sí (pie),,
+Legal,Contacto,/info/contact-us,https://qa-s-oriol.fxstreet.com/info/contact-us,estática,Sí (pie),,
+Legal,Modelo de publicidad,/info/advertising-model,https://qa-s-oriol.fxstreet.com/info/advertising-model,estática,Sí (pie),,
+Legal,Política de cookies,/info/cookie-policy,https://qa-s-oriol.fxstreet.com/info/cookie-policy,estática,Sí (pie),,
+Legal,Identidad corporativa,/info/corporate-identity,https://qa-s-oriol.fxstreet.com/info/corporate-identity,estática,Sí (pie),,
+Legal,Guías editoriales,/info/editorial-guidelines,https://qa-s-oriol.fxstreet.com/info/editorial-guidelines,estática,Sí (pie),,
+Legal,Código ético,/info/ethical-code,https://qa-s-oriol.fxstreet.com/info/ethical-code,estática,Sí (pie),,
+Legal,Privacidad,/info/privacy-policy,https://qa-s-oriol.fxstreet.com/info/privacy-policy,estática,Sí (pie),,
+Legal,Términos y condiciones,/info/terms-conditions,https://qa-s-oriol.fxstreet.com/info/terms-conditions,estática,Sí (pie),,
+Legal,Prevención,/info/prevention,https://qa-s-oriol.fxstreet.com/info/prevention,estática,Sí (pie),,
+Legal,Premium,/info/premium,https://qa-s-oriol.fxstreet.com/info/premium,estática,Sí,,
+Legal,Términos premium,/info/premium-terms-and-conditions,https://qa-s-oriol.fxstreet.com/info/premium-terms-and-conditions,estática,Sí (pie),,
+Legal,Cómo puntúa reseñas,/info/how-we-score-reviews,https://qa-s-oriol.fxstreet.com/info/how-we-score-reviews,estática,Sí,,
+Legal,Cómo usa IA FXStreet,/info/how-fxstreet-uses-ai,https://qa-s-oriol.fxstreet.com/info/how-fxstreet-uses-ai,estática,Sí (pie),,
+Otros,Transparencia traducciones,/transparency-translations,https://qa-s-oriol.fxstreet.com/transparency-translations,estática,No,,Página de producto; no es lote de copy
+RSS,RSS (catch-all),/rss,https://qa-s-oriol.fxstreet.com/rss,feed,No,,Endpoint; subpaths /rss/…

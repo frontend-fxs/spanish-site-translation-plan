@@ -1,0 +1,62 @@
+from,unknown_envs,live_from,qa_from,dest,live_dest,qa_dest,verdict
+/beginners-brokers-australia,unknown,404,404,/brokers/best/beginners-brokers-australia,200,404,REDIRECT: from dead, dest 200
+/beginners-brokers-bangladesh,unknown,404,404,/brokers/best/beginners-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/beginners-brokers-india,unknown,404,404,/brokers/best/beginners-brokers-india,200,200,REDIRECT: from dead, dest 200
+/beginners-brokers-south-africa,unknown,404,404,/brokers/best/beginners-brokers-south-africa,200,404,REDIRECT: from dead, dest 200
+/company/xtb,unknown,404,404,/brokers/xtb,200,200,REDIRECT: from dead, dest 200
+/company/xtb,unknown,404,404,/brokers/reviews/xtb,200,200,REDIRECT: from dead, dest 200
+/day-trading-brokers,unknown,404,404,/brokers/best/day-trading-brokers,200,200,REDIRECT: from dead, dest 200
+/day-trading-brokers-australia,unknown,404,404,/brokers/best/day-trading-brokers-australia,200,404,REDIRECT: from dead, dest 200
+/day-trading-brokers-philippines,unknown,404,404,/brokers/best/day-trading-brokers-philippines,200,404,REDIRECT: from dead, dest 200
+/ecn-brokers,unknown,404,404,/brokers/best/ecn-brokers,ERR:fetch failed,404,REVIEW
+/ecn-brokers-bangladesh,unknown,404,404,/brokers/best/ecn-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/ecn-brokers-nigeria,unknown,404,404,/brokers/best/ecn-brokers-nigeria,200,404,REDIRECT: from dead, dest 200
+/ecn-brokers-philippines,unknown,404,404,/brokers/best/ecn-brokers-philippines,200,404,REDIRECT: from dead, dest 200
+/economic-calendar/event/boc-mpr,unknown,404,404,/macroeconomics/economic-indicator/boc-mpr,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/boc-rate,unknown,404,404,/macroeconomics/economic-indicator/boc-rate,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/boe-rate,unknown,404,404,/macroeconomics/economic-indicator/boe-rate,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/cpi-au,unknown,404,404,/macroeconomics/economic-indicator/cpi-au,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/cpi-ca,unknown,404,404,/macroeconomics/economic-indicator/cpi-ca,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/cpi-uk,unknown,404,404,/macroeconomics/economic-indicator/cpi-uk,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/cpi-us,unknown,404,404,/macroeconomics/economic-indicator/cpi-us,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/fed-interest-rate,unknown,404,404,/macroeconomics/economic-indicator/fed-interest-rate,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/fomc-minutes,unknown,404,404,/macroeconomics/economic-indicator/fomc-minutes,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/gdp-au,unknown,404,404,/macroeconomics/economic-indicator/gdp-au,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/gdp-ca,unknown,404,404,/macroeconomics/economic-indicator/gdp-ca,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/gdp-uk,unknown,404,404,/macroeconomics/economic-indicator/gdp-uk,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/industrial-production-uk,unknown,404,404,/macroeconomics/economic-indicator/industrial-production-uk,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/ism-services,unknown,404,404,/macroeconomics/economic-indicator/ism-services,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/net-change-employment,unknown,404,404,/macroeconomics/economic-indicator/net-change-employment,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/nfp,unknown,404,404,/macroeconomics/economic-indicator/nfp,200,200,REDIRECT: from dead, dest 200
+/economic-calendar/event/rba-minutes,unknown,404,404,/macroeconomics/economic-indicator/rba-minutes,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/rba-rate,unknown,404,404,/macroeconomics/economic-indicator/rba-rate,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/retail-sales-control,unknown,404,404,/macroeconomics/economic-indicator/retail-sales-control,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/uk-services-pmi,unknown,404,404,/macroeconomics/economic-indicator/uk-services-pmi,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/unemployment-au,unknown,404,404,/macroeconomics/economic-indicator/unemployment-au,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/unemployment-ca,unknown,404,404,/macroeconomics/economic-indicator/unemployment-ca,404,404,SKIP: both dead (no functional parallel)
+/economic-calendar/event/unemployment-uk,unknown,404,404,/macroeconomics/economic-indicator/unemployment-uk,404,404,SKIP: both dead (no functional parallel)
+/educacion,unknown,404,404,/education,ERR:fetch failed,200,REDIRECT: from dead, dest 200
+/educacion/curso-forex/unit-2/chapter-1/los-principios-basicos-de-analisis-tecnico,unknown,404,404,/education/curso-forex/unit-2/chapter-1/los-principios-basicos-de-analisis-tecnico,404,404,SKIP: both dead (no functional parallel)
+/educacion/curso-forex/unit-3/chapter-2/como-leer-un-historial-de-rendimiento,unknown,301→https://www.fxstreet.es/education/como-leer-un-historial-de-rendimiento-curso-de-forex-201804251450,404,/education/curso-forex/unit-3/chapter-2/como-leer-un-historial-de-rendimiento,404,404,FROM_ALREADY_REDIRECT 301
+/educacion/curso-forex/unit-3/chapter-2/estadisticas-relacionadas-con-los-beneficios,unknown,301→https://www.fxstreet.es/education/estadisticas-relacionadas-con-los-beneficios-curso-de-forex-201804260921,404,/education/curso-forex/unit-3/chapter-2/estadisticas-relacionadas-con-los-beneficios,404,404,FROM_ALREADY_REDIRECT 301
+/fundamental/tabla-tipos-interes,unknown,301→https://www.fxstreet.es/economic-calendar,404,/economic-calendar/world-interest-rates,200,200,KEEP: from still live (legacy) + dest also live
+/fundamental/tabla-tipos-interes,unknown,301→https://www.fxstreet.es/economic-calendar,404,/calendario-economico/world-interest-rates,200,200,KEEP: from still live (legacy) + dest also live
+/hedging-brokers-australia,unknown,404,404,/brokers/best/hedging-brokers-australia,200,404,REDIRECT: from dead, dest 200
+/hedging-brokers-bangladesh,unknown,404,404,/brokers/best/hedging-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/hedging-brokers-philippines,unknown,404,404,/brokers/best/hedging-brokers-philippines,200,404,REDIRECT: from dead, dest 200
+/indices-trading-brokers-bangladesh,unknown,404,404,/brokers/best/indices-trading-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/indices-trading-brokers-nigeria,unknown,404,404,/brokers/best/indices-trading-brokers-nigeria,200,404,REDIRECT: from dead, dest 200
+/indices-trading-brokers-south-africa,unknown,404,404,/brokers/best/indices-trading-brokers-south-africa,200,404,REDIRECT: from dead, dest 200
+/mt5-brokers-bangladesh,unknown,404,404,/brokers/best/mt5-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/mt5-brokers-philippines,unknown,404,404,/brokers/best/mt5-brokers-philippines,200,404,REDIRECT: from dead, dest 200
+/mt5-brokers-south-africa,unknown,404,404,/brokers/best/mt5-brokers-south-africa,200,404,REDIRECT: from dead, dest 200
+/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,unknown,404,404,/news/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,200,404,REDIRECT: from dead, dest 200
+/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,unknown,404,404,/analysis/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,200,404,REDIRECT: from dead, dest 200
+/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,unknown,404,404,/education/pronostico-del-precio-del-usd-cad-el-aumento-de-los-precios-del-petroleo-fortalece-al-dolar-canadiense-202607130702,404,404,SKIP: both dead (no functional parallel)
+/rates-charts/nzdusd/chart,unknown,301→https://www.fxstreet.es/rates-charts/nzdusd,301→/rates-charts/nzdusd,/rates-charts/nzdusd,200,200,KEEP: from still live (legacy) + dest also live
+/scalping-brokers-bangladesh,unknown,404,404,/brokers/best/scalping-brokers-bangladesh,200,404,REDIRECT: from dead, dest 200
+/scalping-brokers-philippines,unknown,404,404,/brokers/best/scalping-brokers-philippines,200,404,REDIRECT: from dead, dest 200
+/scalping-brokers-united-kingdom,unknown,404,404,/brokers/best/scalping-brokers-united-kingdom,200,404,REDIRECT: from dead, dest 200
+/trading-platforms-brokers-bangladesh,unknown,301→https://www.fxstreet.es/info/premium,404,/brokers/best/trading-platforms-brokers-bangladesh,200,404,KEEP: from still live (legacy) + dest also live
+/trading-platforms-brokers-nigeria,unknown,301→https://www.fxstreet.es/info/premium,404,/brokers/best/trading-platforms-brokers-nigeria,200,404,KEEP: from still live (legacy) + dest also live
+/trading-platforms-brokers-philippines,unknown,301→https://www.fxstreet.es/info/premium,404,/brokers/best/trading-platforms-brokers-philippines,200,404,KEEP: from still live (legacy) + dest also live

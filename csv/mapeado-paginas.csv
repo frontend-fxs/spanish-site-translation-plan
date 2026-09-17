@@ -1,0 +1,145 @@
+EN URL,ES URL,page type,status,exists EN,exists ES,HTTP EN,HTTP ES,traffic 12m EN,traffic 12m ES,notes
+https://www.fxstreet.com/account/premium-checkout,https://www.fxstreet.es/account/premium-checkout,static,EN only,Sí,No,200,404,,,EN: redirect→https://www.fxstreet.com/account/login?uriToRedirect=%2Faccount%2Fpremium-checkout; ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/account/signup,https://www.fxstreet.es/account/signup,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/brokers/all-spreads,,static,EN only,No,,404,,,,EN: Not Found; EN scrap/legacy URL no longer live
+https://www.fxstreet.com/brokers/cashback,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/brokers/cashback/not-available
+https://www.fxstreet.com/brokers/cashback/not-available,https://www.fxstreet.es/brokers/cashback/not-available,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/brokers/press-releases,,static,EN only,No,,404,,,,EN: Not Found; EN scrap/legacy URL no longer live
+https://www.fxstreet.com/commodities,https://www.fxstreet.es/commodities,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/cryptocurrencies/industry-news,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/cryptocurrencies/litecoin,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/cryptocurrencies/rates-charts/[slug],,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/cryptocurrencies/rates-charts/indicators,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/cryptocurrencies/rates-charts/rates,,static,EN only,No,,404,,,,EN: Not Found; EN scrap/legacy URL no longer live
+https://www.fxstreet.com/cryptocurrencies/resources,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/cryptocurrencies/resources/[slug],,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/economic-calendar/australia,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/economic-calendar/canada,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/economic-calendar/fed-sentiment-index,https://www.fxstreet.es/economic-calendar/fed-sentiment-index,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/economic-calendar/united-kingdom,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/economic-calendar/united-states,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/equities,https://www.fxstreet.es/equities,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/advertising-model,https://www.fxstreet.es/info/advertising-model,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/cookie-policy,https://www.fxstreet.es/info/cookie-policy,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/how-fxstreet-uses-ai,https://www.fxstreet.es/info/how-fxstreet-uses-ai,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/how-we-score-reviews,https://www.fxstreet.es/info/how-we-score-reviews,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/jobs,https://www.fxstreet.es/info/jobs,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/jobs/[slug],,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/info/premium,https://www.fxstreet.es/info/premium,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/premium-terms-and-conditions,https://www.fxstreet.es/info/premium-terms-and-conditions,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/info/privacy-policy,https://www.fxstreet.es/info/privacy-policy,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/macroeconomics/economic-indicator/[slug]/trading,,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/macroeconomics/events/[slug],,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/macroeconomics/events/trade-war,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/macroeconomics/trade-war
+https://www.fxstreet.com/macroeconomics/trade-war,https://www.fxstreet.es/macroeconomics/trade-war,static,EN only,Sí,No,200,404,,,ES: Not Found; mapped as match but ES dead live → EN only
+https://www.fxstreet.com/news/archive,,static,EN only,No,,404,,,,EN: Not Found; EN scrap/legacy URL no longer live
+https://www.fxstreet.com/news/latest/asset,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/news
+https://www.fxstreet.com/press-releases,,static,EN only,Sí,,200,,,,
+https://www.fxstreet.com/press-releases/[slug],,dynamic,EN only,,,,,,,EN: pattern — no live check
+https://www.fxstreet.com/technical-analysis/cycle-analysis,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/sentiment,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/sentiment/fed-sentiment-index,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/economic-calendar/fed-sentiment-index
+https://www.fxstreet.com/trade-now,,static,EN only,Sí,,200,,,,EN: redirect→https://www.fxstreet.com/brokers?utm_medium=native&utm_source=fxstreet&utm_campaign=trade_now
+https://www.fxstreet.com/live-video,https://www.fxstreet.es/live-video,static,ES only,No,Sí,404,200,,,EN: Not Found; mapped as match but EN dead live → ES only
+https://www.fxstreet.com/live-video/latest,https://www.fxstreet.es/live-video/latest,static,ES only,No,Sí,404,200,,,EN: Not Found; mapped as match but EN dead live → ES only
+https://www.fxstreet.com/live-video/shows,https://www.fxstreet.es/live-video/shows,static,ES only,No,Sí,404,200,,,EN: Not Found; mapped as match but EN dead live → ES only
+,https://www.fxstreet.es/[seo-broker-landing],dynamic,ES only,,,,,,,ES: pattern — no live check
+,https://www.fxstreet.es/brokers/brokers-forex,static,ES only,,No,,404,,,ES: Not Found; ES scrap/legacy URL no longer live
+,https://www.fxstreet.es/brokers/organismos-reguladores,static,ES only,,No,,404,,,ES: Not Found; ES scrap/legacy URL no longer live
+,https://www.fxstreet.es/educacion/*,dynamic,ES only,,,,,,,ES: pattern — no live check
+,https://www.fxstreet.es/education/curso-forex,static,ES only,,Sí,,200,,,
+,https://www.fxstreet.es/education/curso-forex/*,dynamic,ES only,,,,,,,ES: pattern — no live check
+,https://www.fxstreet.es/fundamental/tabla-tipos-interes,static,ES only,,No,,404,,,ES: Not Found; ES scrap/legacy URL no longer live
+,https://www.fxstreet.es/mexico,static,ES only,,Sí,,200,,,
+,https://www.fxstreet.es/rates-charts/[slug]/chart,dynamic,ES only,,,,,,,ES: pattern — no live check
+,https://www.fxstreet.es/rates-charts/chart/station,static,ES only,,Sí,,200,,,
+,https://www.fxstreet.es/rates-charts/rates/majors,static,ES only,,Sí,,200,,,
+,https://www.fxstreet.es/technical-analysis/support-resistance/pivot-points,static,ES only,,Sí,,200,,,
+https://www.fxstreet.com/,https://www.fxstreet.es/,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/[post-sin-vertical],https://www.fxstreet.es/[post-sin-vertical],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/account/additional-data,https://www.fxstreet.es/account/additional-data,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/account/login?uriToRedirect=%2Faccount%2Fadditional-data
+https://www.fxstreet.com/account/login,https://www.fxstreet.es/account/login,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/account/manage-password,https://www.fxstreet.es/account/manage-password,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/analysis,https://www.fxstreet.es/analysis,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/analysis/[slug],https://www.fxstreet.es/analysis/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/analysis/feed,https://www.fxstreet.es/analysis/feed,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/analysis/latest,https://www.fxstreet.es/analysis/latest,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/author,https://www.fxstreet.es/author,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/author/[slug],https://www.fxstreet.es/author/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/bonds,https://www.fxstreet.es/bonds,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/brokers,https://www.fxstreet.es/brokers,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/brokers/[slug],https://www.fxstreet.es/brokers/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/brokers/best,https://www.fxstreet.es/brokers/best,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/brokers/best/[slug],https://www.fxstreet.es/brokers/best/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/brokers/prop/[slug],https://www.fxstreet.es/brokers/prop/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/brokers/reviews,https://www.fxstreet.es/brokers/reviews,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/brokers/reviews/[slug],https://www.fxstreet.es/brokers/reviews/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/commodities/[slug],https://www.fxstreet.es/commodities/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/company,https://www.fxstreet.es/company,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/company/[slug],https://www.fxstreet.es/company/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/cryptocurrencies,https://www.fxstreet.es/cryptocurrencies,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/[slug],https://www.fxstreet.es/cryptocurrencies/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/cryptocurrencies/bitcoin,https://www.fxstreet.es/cryptocurrencies/bitcoin,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/cardano,https://www.fxstreet.es/cryptocurrencies/cardano,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/dogecoin,https://www.fxstreet.es/cryptocurrencies/dogecoin,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/ethereum,https://www.fxstreet.es/cryptocurrencies/ethereum,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/news,https://www.fxstreet.es/cryptocurrencies/news,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/news/[slug],https://www.fxstreet.es/cryptocurrencies/news/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/cryptocurrencies/news/feed,https://www.fxstreet.es/cryptocurrencies/news/feed,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/rates-charts,https://www.fxstreet.es/cryptocurrencies/rates-charts,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts
+https://www.fxstreet.com/cryptocurrencies/ripple,https://www.fxstreet.es/cryptocurrencies/ripple,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/cryptocurrencies/solana,https://www.fxstreet.es/cryptocurrencies/solana,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/currencies/[slug],https://www.fxstreet.es/currencies/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/economic-calendar,https://www.fxstreet.es/calendario-economico,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/economic-calendar/[slug],https://www.fxstreet.es/economic-calendar/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/economic-calendar/country/[id],https://www.fxstreet.es/economic-calendar/country/[id],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/economic-calendar/event/[slug],https://www.fxstreet.es/calendario-economico/event/[guid],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/economic-calendar/event/[slug],https://www.fxstreet.es/economic-calendar/event/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/economic-calendar/forex-market-hours,https://www.fxstreet.es/economic-calendar/forex-market-hours,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/economic-calendar/world-interest-rates,https://www.fxstreet.es/economic-calendar/world-interest-rates,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/education,https://www.fxstreet.es/education,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/education/[slug],https://www.fxstreet.es/education/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/education/feed,https://www.fxstreet.es/education/feed,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/education/latest,https://www.fxstreet.es/education/latest,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/education
+https://www.fxstreet.com/events/[slug],https://www.fxstreet.es/events/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/info/about-us,https://www.fxstreet.es/info/about-us,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/advertising-and-sponsorship,https://www.fxstreet.es/info/advertising-and-sponsorship,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://editorial.fxsstatic.com/pdfs/fxstreet-media-kit.pdf; ES: redirect→https://editorial.fxsstatic.com/pdfs/fxstreet-media-kit.pdf
+https://www.fxstreet.com/info/contact-us,https://www.fxstreet.es/info/contact-us,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/corporate-identity,https://www.fxstreet.es/info/corporate-identity,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/editorial-guidelines,https://www.fxstreet.es/info/editorial-guidelines,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/ethical-code,https://www.fxstreet.es/info/ethical-code,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/prevention,https://www.fxstreet.es/info/prevention,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/info/terms-conditions,https://www.fxstreet.es/info/terms-conditions,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/live-video/[slug],https://www.fxstreet.es/live-video/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/macroeconomics/central-banks,https://www.fxstreet.es/macroeconomics/central-banks,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/macroeconomics/central-banks/[slug],https://www.fxstreet.es/macroeconomics/central-banks/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/macroeconomics/economic-indicator/[slug],https://www.fxstreet.es/macroeconomics/economic-indicator/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/markets/commodities,https://www.fxstreet.es/markets/commodities,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/commodities
+https://www.fxstreet.com/markets/commodities/[slug]/gold,https://www.fxstreet.es/markets/commodities/[slug]/gold,dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/markets/commodities/[slug]/oil,https://www.fxstreet.es/markets/commodities/[slug]/oil,dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/markets/equities,https://www.fxstreet.es/markets/equities,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/equities
+https://www.fxstreet.com/news,https://www.fxstreet.es/news,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/news/[slug],https://www.fxstreet.es/news/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/news/feed,https://www.fxstreet.es/news/feed,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/profile,https://www.fxstreet.es/profile,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/account/login?uriToRedirect=%2Fprofile
+https://www.fxstreet.com/rates-charts,https://www.fxstreet.es/rates-charts,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/[slug],https://www.fxstreet.es/rates-charts/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/rates-charts/[slug]/forecast,https://www.fxstreet.es/rates-charts/[slug]/forecast,dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/rates-charts/chart,https://www.fxstreet.es/rates-charts/chart,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/chart-interactive,https://www.fxstreet.es/rates-charts/chart-interactive,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/forecast,https://www.fxstreet.es/rates-charts/forecast,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/indicators,https://www.fxstreet.es/rates-charts/indicators,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/indicators/technical-levels,https://www.fxstreet.es/rates-charts/indicators/technical-levels,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/rates-charts/rates,https://www.fxstreet.es/rates-charts/rates,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/rates-charts/rates/crosses/[slug],https://www.fxstreet.es/rates-charts/rates/crosses/[slug],dynamic,direct match,,,,,,,EN: pattern — no live check; ES: pattern — no live check
+https://www.fxstreet.com/rates-charts/rates/indices,https://www.fxstreet.es/rates-charts/rates/indices,static,direct match,No,No,404,404,,,EN: Not Found; ES: Not Found; both URLs dead / unreachable
+https://www.fxstreet.com/rss,https://www.fxstreet.es/rss,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/search,https://www.fxstreet.es/search,static,direct match,Sí,Sí,200,200,,,
+https://www.fxstreet.com/subscriptions,https://www.fxstreet.es/subscriptions,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/account/login?uriToRedirect=%2Fsubscriptions
+https://www.fxstreet.com/t/500,https://www.fxstreet.es/t/500,static,direct match,No,No,404,404,,,EN: Not Found; ES: Not Found; both URLs dead / unreachable
+https://www.fxstreet.com/technical-analysis,https://www.fxstreet.es/technical-analysis,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/elliott-wave,https://www.fxstreet.es/technical-analysis/elliott-wave,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/sentiment/risk-appetite,https://www.fxstreet.es/technical-analysis/sentiment/risk-appetite,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/support-resistance,https://www.fxstreet.es/technical-analysis/support-resistance,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/technical-analysis/support-resistance/fibonacci,https://www.fxstreet.es/technical-analysis/support-resistance/fibonacci,static,direct match,Sí,Sí,200,200,,,EN: redirect→https://www.fxstreet.com/rates-charts/indicators
+https://www.fxstreet.com/transparency-translations,https://www.fxstreet.es/transparency-translations,static,direct match,Sí,Sí,200,200,,,

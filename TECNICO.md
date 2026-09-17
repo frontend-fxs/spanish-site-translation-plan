@@ -1,157 +1,285 @@
-# Técnico — Checklist de migración de idioma (Site / next-intl)
+# Técnico — Migración de idioma (muestra: español)
 
 | | |
 |--|--|
-| **Para** | Engineering / Tech lead |
-| **Producto (PO)** | [README.md](./README.md) — gestiona traducciones UI en **Google Drive / Sheets** (sin GitHub) |
-| **Referencia viva** | Primer idioma no-EN: **`es`** (FXStreet.es) · rama Site `chore/modular-messages-i18n` |
-| **Fuente CSV (eng)** | [csv/](./csv/) — regenerados 1:1 desde Site (`regenerate-csv-from-site.mjs`); el PO trabaja la copia en Sheets |
+| **Para** | Engineering / Tech lead / ops / SEO técnico |
+| **Producto (PO)** | [README.md](./README.md) + [csv/](./csv/) `01`–`06` — **no sobrescribir** (Drive / Sheets; el PO ya trabaja ahí) |
+| **Este documento** | Guía viva end-to-end. **Se puede pisar cada día.** No vive en el repo Site. |
+| **Updates del día** | `anexo-YYYY-MM-DD/` — no tocar README ni lotes PO |
+| **Referencia viva ES** | `es` / `fxstreet.es` · rama Site `oriol/es-routing-and-nav` |
 
-**Distribución PO:** carpeta Drive dedicada con el README (Doc) + una Sheet por lote (`01`…`06`). El PO no usa GitHub. Eng exporta Sheet → CSV/TSV y reintegra en Site.
+**Distribución PO:** Drive con el README (Doc) + una Sheet por lote (`01`…`06`). Extra para el PO = anexo de esa fecha (p. ej. lote 07 el 16/09). El PO no usa GitHub. Eng exporta Sheet → CSV y reintegra en Site.
 
-**Modelo de producto:** un locale por deploy/dominio (`NEXT_PUBLIC_LOCALE`). Sin prefijos `/xx/…` en la URL (salvo paths localizados puntuales, p. ej. calendario ES). EN = `fxstreet.com`. UI = JSON next-intl colocated; editorial = gateway/CMS por cultura.
+### Qué se pisa y qué no
 
-**Convención checklist:** `[ ]` pendiente · `[~]` parcial · `[x]` hecho · `[D]` decisión producto (no abrir sin orden PO).
+| Sitio | Quién lo usa | Regla |
+|-------|--------------|-------|
+| `README.md` | PO / Traducciones / SEO / Legal | **No editar** una vez publicado a Drive. Indicaciones nuevas → `anexo-YYYY-MM-DD/` |
+| `csv/01`–`06`, `mapeado-paginas.*` | Mismas hojas | **No sobrescribir** su revisión. Keys nuevas = CSV anexo del día, no sustituir la hoja |
+| `TECNICO.md` | Eng / ops / SEO técnico | Sobrescribir cada día con el estado actual |
+| `anexo-YYYY-MM-DD/` | Diario | Añadir notas, CSV de esa jornada, entregas PO/QA de ese día |
 
-Este documento es la **plantilla de migración** para cualquier locale `xx`. La columna **ES** marca el estado del primer rollout.
+| Día | Carpeta |
+|-----|---------|
+| 16/09/2026 | [anexo-2026-09-16](./anexo-2026-09-16/) — instrucciones PO (calendario + lote 07) |
+| 17/09/2026 | [anexo-2026-09-17](./anexo-2026-09-17/) — QA plantillas, 301 HTTP, cierre, esta convención |
+
+**Convención:** `[ ]` pendiente · `[~]` parcial · `[x]` hecho · `[D]` decisión de producto (no abrir sin PO).
+
+La columna **ES** es el estado del primer rollout. Al clonar el proceso para `xx`, copiar este fichero (o marcar en una copia) y sustituir `es` / `fxstreet.es`.
 
 ---
 
-## 0. Arquitectura i18n (patrón Ana — colocation)
+## Cómo está partido el trabajo (no es solo front)
+
+| Capa | Qué cubre | Quién | ¿Site lo resuelve solo? |
+|------|-----------|-------|-------------------------|
+| Producto | Alcance, gates EN-only, path localizado, variante de idioma | PO / negocio | No |
+| UI / chrome | JSON next-intl, nav, hardcodes, lotes 01–07 | Eng Site + Traducciones / SEO / Legal | Paridad sí; copy humano no |
+| Routing | Rewrites, redirects, calendarios, language switcher | Eng Site + SEO | Sí, con dictamen SEO |
+| Deploy | `NEXT_PUBLIC_LOCALE`, TLD, CDN `site/xx`, matriz qa/pro | Eng + ops | Código sí; DNS/CDN ops |
+| Gateway | Mismo contrato, `Languages.xx`, CultureName | Gateway | **No** |
+| Editorial | News, analysis, education, brokers, home, autores, calendar items | Contenidos / CMS | **No** — si falta: menú oculto |
+| Búsqueda | Algolia `CultureName: xx` | Search + gateway | Front ya filtra; falta índice |
+| SEO TLD | Sitemaps, canonical, hreflang, legado | SEO + gateway + Data | 301 solo con dest 2xx |
+| Fuera Site | Emails, newsletter, workflows CMS, Propinder | Equipos dueños | No |
+| QA | Plantillas + regresión EN | QA + eng | Lote 08 + smoke |
+
+Pedido ya hecho en ES: si un endpoint de gateway **no tiene `es`**, **lo genera**. Site no inventa artículos.
+
+---
+
+## Principios (aplicar a cualquier `xx`)
+
+1. **Un locale = un deploy = un TLD.** `NEXT_PUBLIC_LOCALE=xx`. Sin prefijo `/xx/…`.
+2. **UI ≠ editorial.** JSON = chrome, legal estático, SEO de plantilla, nav. El resto llega del gateway por cultura.
+3. **Espejo EN**, excepto superficies EN-only (no traducir ni publicar).
+4. **Paths ingleses** por defecto. Path localizado solo con orden de producto.
+5. Copy del repo = **borrador IA** hasta Sheets en “Revisado”.
+6. **Un href scrapeado no es una página.** 301 solo si origen muerto **y** destino **2xx** (HTTP real).
+7. Sin editorial en una vertical incluida: **ocultar del menú**, no mostrar inglés.
+
+---
+
+## Quién hace qué
+
+| Área | Quién | Entrega |
+|------|--------|---------|
+| Alcance, gates, paths | PO | Este TECNICO §2 + README alcance |
+| Variante (ES: ES / LatAm / neutro) | Traducciones | Antes del lote 01 |
+| Copy UI (01–07) | Traducciones + SEO (02) + Legal (01) | Sheets → Revisado |
+| Diccionarios, nav, routing, gates | Eng Site | Rama + QA |
+| `Languages.xx`, APIs, CultureName | Gateway | Mismo contrato que EN |
+| Artículos y fichas | Contenidos | Cultura `xx` o menú oculto |
+| Algolia | Search + gateway | Filtro `CultureName: xx` |
+| Dominio, CDN, tokens | Ops | Filas qa + pro |
+| Redirects legado | SEO + eng | Lista explícita, dest vivo |
+| Tráfico 12m URLs only-`xx` | Data | Dictamen grupo B |
+| Emails / newsletter / Propinder | Dueños | Fuera Site |
+| QA + regresión EN | QA + eng | Lote 08 + smoke EN |
+
+---
+
+## Fases (orden para el siguiente idioma)
+
+### Fase 0 — Decisiones (bloquea código de producto)
+
+- Espejo EN + lista EN-only (P10–P14; P15 excepciones de mercado).
+- ¿Path localizado? Canonical + ¿el path EN sigue **sin 301**? (ES calendario: sí, rewrite).
+- Variante de idioma.
+- Legado del TLD: redirigir / no migrar / más adelante.
+
+### Fase 1 — Site i18n (en paralelo a CMS)
+
+1. Registrar `xx` **una vez** en `Language` / `LocaleKeyed`.
+2. Paridad keys EN↔`xx` (colocated + primitives + rss).
+3. `navigation-data-xx.ts` solo si hay overrides; si no, defaults EN + add/remove/replace/move.
+4. Tags de noticias: mapa `content-routes`, no clonar menú.
+5. Hardcodes → next-intl.
+6. `node regenerate-csv-from-site.mjs` → **AUDIT OK — keys 1:1**.
+7. Sheets en Drive. Reintegrar columna revisada. Ignorar filas `.url` / `.href` / `.link` / `.linkPath`. Conservar `<link>`, `{vars}`.
+
+### Fase 2 — Site routing y deploy
+
+1. Filas qa+pro en `Build/site-deploy.yaml`.
+2. Switcher → TLD absoluto.
+3. Rewrites por vertical. Calendario: `resolveCalendarBasePath`, no `if (es)`.
+4. Redirects compartidos (ya en todos los deploys) vs **solo-`xx`** (`NEXT_PUBLIC_LOCALE === 'xx'`).
+5. Gates: `notFound` + fuera de menú.
+
+### Fase 3 — Gateway / CMS / search
+
+| Acción | Quién |
+|--------|--------|
+| Generar CultureName `xx` o vacío a propósito | Gateway + Contenidos |
+| Mismo contrato API | Gateway |
+| `configuration.Languages.xx` | Gateway (si falta, `i18n/request.ts` tira) |
+| Algolia `CultureName: xx` | Search |
+| Sitemaps por cultura | Gateway (Site: `/sitemap*` → `/api/v1/sitemap`) |
+| RSS ítems por cultura | Gateway |
+
+Site: empty states + no pintar ítems cuyo `CultureName` no sea `xx`.
+
+### Fase 4 — SEO / URLs
+
+1. Crawl **legacy TLD** y **Next QA**. Toolkit: inventario **solo 2xx**; rotos en `*.broken.csv` + `found_on`. Compare: `compare-origins --legacy <TLD> --processed <QA>`.
+2. Clasificar: same-path · alias de producto · moved+dest 2xx (301) · both dead (nada) · legacy-only vivo (dictamen).
+3. HTTP origen y destino **antes** del 301.
+4. Landings raíz: lista de slugs, **nunca** `/:slug` abierto.
+5. Hreflang / canonical: SEO.
+
+### Fase 5 — Ops y terceros
+
+DNS, CDN `site/xx`, token, OneSignal, Turnstile, cookies, mails. Charts: números **siempre `en-US`**.
+
+### Fase 6 — QA
+
+Plantillas no gated (lote 08): chrome `xx`, path canónico. Gated EN: 404. Home sin bloques EN-only. Search/RSS/404. **Regresión EN**. Ficha vacía = CMS.
+
+### Fase 7 — Go-live
+
+Mínimo: lotes 01–04 reintegrados · `Languages.xx` · CMS/Algolia en el menú · smoke QA/PRO · menú sin gated EN · regresión EN.
+
+Congelar desviaciones en **este** TECNICO (nueva fila / lección).
+
+---
+
+## 0. Arquitectura i18n Site (colocation)
 
 | Capa | Ubicación | Registro |
 |------|-----------|----------|
-| Features + chrome | `packages/ui/src/components/{name}/{name}.{locale}.json` | `i18n/colocated-message-modules.ts` → `loadComponentMessages` |
-| Primitives | `packages/ui/src/primitives/{name}.{locale}.json` | `loadPrimitiveMessages` |
-| Server-only | `packages/lib/server-only/rss/rss-feed.{locale}.json` | `loadServerOnlyMessages` |
-| Nav (no JSON) | `navigation-data-{locale}.ts` | `navigation-data.ts` |
+| Features + chrome | `Site/packages/ui/src/components/{name}/{name}.{locale}.json` | catálogo i18n |
+| Primitives | `packages/ui/src/primitives/{name}.{locale}.json` | idem |
+| Server-only | `packages/lib/server-only/rss/rss-feed.{locale}.json` | idem |
+| Nav | `navigation-data-{locale}.ts` | `navigation-data.ts` |
 
-**Reglas:**
+Reglas: namespace = carpeta kebab; diccionario nuevo = EN+`xx` **y** registro; badge premium UI = `premium-badge`; CTAs brokers = `brokers.common`; markup al traducir.
 
-1. Namespace = nombre de carpeta (kebab). Ej. `useTranslations('header')`, `broker-review`, `seo`.
-2. Cada diccionario nuevo → crear JSON EN+`xx` y **añadir** el nombre a `colocatedMessageModules`.
-3. Badge premium UI = `premium-badge` (no choca con landing `premium`). CTAs brokers compartidos = `brokers.common`.
-4. Conservar markup al traducir: `<link>…</link>`, `{vars}`, etc.
-5. Loader hoy carga el registry entero (`Promise.allSettled` omite ficheros ausentes). Colocation habilita lazy por ruta más adelante; no es bloqueante de go-live.
-6. Doc corta en Site: `messages/README.md` (carpeta `messages/{module}/` retirada).
+**Reintegrar Sheets:** `componentes/{name}` → `{name}.es.json`; `navegacion` → `navigation-data-es.ts`; `rss` → `rss-feed.es.json`.
 
-**Reintegrar Sheets PO → Site:** exportar cada hoja (Archivo → Descargar → CSV). Mapear `Carpeta` = `componentes/{name}` → `packages/ui/src/components/{name}/{name}.es.json` (clave = path de hoja); `navegacion` → `navigation-data-es.ts` (Text por Clave); `rss` → `rss-feed.es.json`. Usar **Español (revisado)**; si vacío y Estado=Revisado, aceptar borrador. Conservar markup. No exigir al PO que exporte: eng baja la Sheet cuando avisen lote cerrado.
+**Regenerar CSV:** `node regenerate-csv-from-site.mjs`. **Word PO:** `node regenerate-docx-from-readme.mjs` (Windows + Word).
 
-**Regenerar CSV tras cambios de i18n en Site:** desde este repo, `node regenerate-csv-from-site.mjs` (lee `Site/` hermano). Debe terminar con `AUDIT OK — component keys 1:1`. Luego reimportar Sheets en Drive (*Sustituir hoja*).
+**Dónde se toca `xx` en Site** (referencia, no documentar en el repo Site):
 
-**Publicar lote a Drive (eng):** CSV de [csv/](./csv/) → Sheet con el mismo nombre de lote (`01-legal` … `06-rss`; lote 02 = `02-chrome-navegacion`).
+| Pieza | Path |
+|-------|------|
+| Locale | `Language`, `locale-keyed.ts` |
+| Mensajes | `{name}.{xx}.json` + catálogo |
+| Nav | `navigation-data-{xx}.ts` |
+| Calendario | `calendar-base-path.ts`, `rewrites.ts` |
+| Gates | `show-component-service.ts`, `notFound` |
+| Deploy | `Build/site-deploy.yaml` |
+| Redirects | `redirects.ts`, `proxy.ts` |
+| Switcher | `languages.ts` |
+| Cultura fetch | `CultureName: [locale]` |
+| Config | `configuration.Languages[PUBLIC_LOCALE]` |
 
 ---
 
-## 1. Checklist plantilla — nuevo idioma `xx`
-
-Completar en orden. Sustituir `xx` / `TLD` (ej. `es` / `fxstreet.es`).
+## 1. Checklist `xx` (estado ES)
 
 ### A. Producto / alcance
 
 | # | Ítem | ES |
 |---|------|-----|
-| A1 | Alcance: espejo EN sin superficies EN-only; sin traducir “por si acaso” | `[x]` (PO) |
-| A2 | Feature gates: no abrir superficies EN-only sin orden PO | `[x]` gates actuales; ver §2 |
-| A3 | Variante de idioma / tono (D-F) cerrada antes de revisión humana | `[ ]` |
-| A4 | Lotes UI revisados en Drive/Sheets (mín. go-live: 01–04) y avisados a eng | `[ ]` |
-| A5 | CMS/Algolia listos en verticales “Sí locale” (o menú oculto — D-A) | `[ ]` |
+| A1 | Espejo EN; no traducir EN-only | `[x]` (PO) |
+| A2 | Gates: no abrir EN-only sin PO | `[x]` §2 |
+| A3 | Variante / tono antes de revisión humana | `[ ]` |
+| A4 | Lotes UI 01–04 (mín.) revisados y avisados | `[ ]` |
+| A5 | CMS/Algolia o menú oculto | `[ ]` |
 
 ### B. Diccionarios UI
 
 | # | Ítem | ES |
 |---|------|-----|
-| B1 | Paridad de **keys** EN↔`xx` en todos los `*.{en,xx}.json` colocated + primitives + rss | `[x]` |
-| B2 | Copy `xx` = borrador IA → revisión humana vía CSV | `[~]` |
-| B3 | Hardcodes UI → next-intl (a11y, Zod, schema app name, mailto, etc.) | `[x]` |
-| B4 | `navigation-data-xx.ts` + registro en `navigation-data.ts` | `[x]` |
-| B5 | Paths localizados solo si producto + App Router (calendario ES) | `[x]` |
-| B6 | Reintegrar Sheets revisadas → JSON / nav | `[ ]` |
+| B1 | Paridad keys EN↔`xx` | `[x]` |
+| B2 | Copy = borrador → humano | `[~]` |
+| B3 | Hardcodes → next-intl | `[x]` |
+| B4 | Nav `xx` | `[x]` |
+| B5 | Paths localizados solo con producto | `[x]` calendario |
+| B6 | Reintegrar Sheets | `[ ]` |
 
 ### C. Infra / deploy
 
 | # | Ítem | ES |
 |---|------|-----|
-| C1 | Dominio + DNS + `site-gateway-xx` (+ `-qa`) + CDN `site/xx` | `[ ]` ops |
-| C2 | Fila(s) deploy matrix qa+pro (`Build/site-deploy.yaml`) | `[x]` matriz |
-| C3 | `NEXT_PUBLIC_LOCALE=xx`, `SITE_URL`, `CDN_URL`, gateway template, auth | `[x]` código / `.env.example` |
-| C4 | `SiteLocale` incluye `xx` (`locale-keyed.ts`) | `[x]` |
-| C5 | Language switcher → TLD absoluto | `[x]` |
-| C6 | Gateway `Languages.xx` → languageId correcto | `[ ]` |
-| C7 | Smoke QA + PRO; regresión EN | `[ ]` |
-| C8 | Política números charts: **siempre `en-US`** (`convertToDecimalPlaces`) | `[x]` |
-| C9 | Terceros por locale: OneSignal, Turnstile/aria, cookies, emails soporte | `[~]` mailto; resto `[ ]` |
+| C1 | Dominio + DNS + gateway + CDN | `[ ]` ops |
+| C2 | Matriz qa+pro `site-deploy.yaml` | `[x]` |
+| C3 | Locale, SITE_URL, CDN, gateway, auth | `[x]` código |
+| C4 | `SiteLocale` / `Language` incluye `xx` | `[x]` |
+| C5 | Switcher TLD absoluto | `[x]` |
+| C6 | Gateway `Languages.xx` | `[ ]` |
+| C7 | Smoke QA+PRO; regresión EN | `[ ]` |
+| C8 | Charts `en-US` | `[x]` |
+| C9 | OneSignal, Turnstile, cookies, mails | `[~]` mailto |
 
-### D. CMS / búsqueda / SEO contenido
+### D. CMS / search / SEO contenido
 
 | # | Ítem | ES |
 |---|------|-----|
 | D1 | APIs `site-gateway-xx*` mismo contrato | `[ ]` |
-| D2 | Contenido CultureName `xx` (home, news, analysis, education, brokers, rates, calendar, directors…) | `[ ]` |
-| D3 | Algolia índice/filtro `CultureName: xx` | `[ ]` |
-| D4 | Sitemaps + canonical TLD; hreflang según D-D | `[ ]` |
-| D5 | RSS: keys UI + ítems por cultura | keys `[x]` · ítems `[ ]` |
-| D6 | Fuera Site: emails, newsletter templates, workflows CMS, Propinder | `[ ]` |
+| D2 | Contenido CultureName `xx` | `[ ]` (pedido generar) |
+| D3 | Algolia `CultureName: xx` | `[ ]` |
+| D4 | Sitemaps + canonical; hreflang | `[ ]` |
+| D5 | RSS keys + ítems | keys `[x]` · ítems `[ ]` |
+| D6 | Emails, newsletter, workflows, Propinder | `[ ]` |
 
-### E. Routing / redirects / SEO técnico
+### E. Routing / SEO técnico
 
 | # | Ítem | ES |
 |---|------|-----|
-| E1 | Mismo path que EN salvo excepciones producto | `[x]` (+ calendario) |
-| E2 | Redirects legacy del TLD anterior / Sitefinity | `[x]` mayor parte |
-| E3 | 301 paths EN → localizados (si aplica) en deploy `xx` | `[x]` economic-calendar → calendario |
-| E4 | Landings SEO raíz / posts legacy | `[ ]` si aún aplican |
-| E5 | Crawl TLD: patrones canónicos OK (no hace falta listar todos los slugs CMS) | `[x]` 2026-09-09 |
+| E1 | Mismo path que EN salvo producto | `[x]` + calendario |
+| E2 | Redirects legado | `[x]` mayor parte |
+| E3 | Path EN accesible sin 301 si hay rewrite | `[x]` calendario |
+| E4 | Landings / posts legacy | `[x]` HTTP 17/09; resto grupo B |
+| E5 | Crawl patrones canónicos | `[x]` 2026-09-09 |
 
-### F. QA aceptación
+### F. QA
 
 | # | Ítem | ES |
 |---|------|-----|
 | F1 | Home / nav / footer / switcher | `[ ]` |
-| F2 | Verticales “Sí locale” + legal `/info/*` + account/premium | `[ ]` |
-| F3 | Search, RSS, 404/500, mobile+desktop | `[ ]` |
-| F4 | **Regresión EN** | `[ ]` |
+| F2 | Verticales + `/info/*` + account | `[ ]` |
+| F3 | Search, RSS, 404/500, viewports | `[ ]` |
+| F4 | Regresión EN | `[ ]` |
 
-### G. Cierre / plantilla siguiente idioma
+### G. Cierre (plantilla siguiente `xx`)
 
 | # | Ítem | ES |
 |---|------|-----|
-| G1 | Congelar decisiones + CSV + gates como baseline | `[ ]` |
-| G2 | Diff EN↔`xx` = 0 gaps de keys; hunt literales EN en UI | `[ ]` tras revisión |
-| G3 | Documentar desviaciones (paths localizados, gates) en este TECNICO | `[~]` |
+| G1 | Congelar decisiones + CSV + gates **aquí** | `[ ]` |
+| G2 | 0 gaps keys; hunt literales EN | `[ ]` |
+| G3 | Desviaciones documentadas en este fichero | `[~]` |
 
 ---
 
-## 2. Gates EN-only (referencia ES / no abrir sin PO)
+## 2. Gates EN-only (no abrir sin PO)
 
-Fuente producto: [README §1](./README.md). Código: `show-component-service.ts` + pages con `notFound` por locale.
+Código: `show-component-service.ts` + `notFound` por locale.
 
 | PO | Superficie | Comportamiento |
 |----|------------|----------------|
-| P10 | Press releases | `locale !== 'en'` → `notFound`; fuera menú ES |
+| P10 | Press releases | `locale !== 'en'` → 404; fuera menú ES |
 | P11 | Crypto industry-news | EN only |
-| P12 | Newsletter signup / chip | Condicionales EN |
+| P12 | Newsletter web | EN only |
 | P13 | Home More news / In-deep / Best brokers yearly | EN only |
 | P14 | Calendar speech / notif | EN only |
-| P15–P17+ | México, curso-forex, live-video, landings SEO raíz, technical-analysis, bonds, jobs, organismos, events/strategy, tabla-tipos, advertising legado, brokers-forex, posts raíz, eventos calendario GUID | **Pendiente PO** — ver [README § Páginas fuera del espejo](./README.md) |
-| — | `/calendario-economico` | Solo ES (excepción de path) |
-
-Al migrar `xx`: copiar o ajustar esta tabla según decisiones del PO de ese mercado.
+| P15 | Reviews / showcases extra | **Pendiente negocio** |
+| P16 | ES-only legado (grupo B README) | **Pendiente** salvo landings raíz (301 17/09) |
+| — | `/calendario-economico` | Familia completa. Slugs EN. `/economic-calendar/…` **sin 301**. |
 
 ---
 
-## 3. Infra ES (detalle deploy)
-
-Fuente: `Site/Build/site-deploy.yaml`.
+## 3. Infra ES
 
 | Variable | Rol | ES |
 |----------|-----|-----|
 | `NEXT_PUBLIC_LOCALE` | Cultura build | `es` |
-| `NEXT_PUBLIC_SITE_URL` | Canonical/OG | `https://www.fxstreet.es` / QA `https://qa.fxstreet.es` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical/OG | `www.fxstreet.es` / `qa.fxstreet.es` |
 | `NEXT_PUBLIC_CDN_URL` | Assets | `…/site/es` (+ `-qa`) |
 | `NEXT_PUBLIC_SITE_GATEWAY_URL_TEMPLATE` | Gateway | `site-gateway-{locale}{site_env}.fxstreet.com` |
 | `NEXT_PUBLIC_USER_AUTH_*` | Auth | Compartidas |
-| `NEXT_PUBLIC_SITE_ENV` | qa / vacío pro | Language switcher |
+| `NEXT_PUBLIC_SITE_ENV` | qa / vacío pro | Switcher |
 | `AUTHORIZATION_APITOKEN` | Gateway | Por entorno |
 
 | culture | env | siteUrl | gateway | CDN | image |
@@ -160,63 +288,103 @@ Fuente: `Site/Build/site-deploy.yaml`.
 | es | pro | www.fxstreet.es | site-gateway-es | site/es | site-es |
 | en | qa/pro | fxstreet.com | site-gateway-en* | site/en* | site-en* |
 
-| Pieza | Path |
-|-------|------|
-| `SiteLocale` | `locale-keyed.ts` |
-| `CALENDAR_BASE_PATH` | `calendar-base-path.ts` → `/calendario-economico` |
-| Language switcher | `languages.ts` |
-| Redirects | `Site/redirects.ts` |
-
 ---
 
-## 4. Inventario superficies (crawl ES validado)
+## 4. URLs, scrape y redirects (cómo no romper)
+
+### 4.1 Tipos de redirect
+
+| Tipo | Dónde | Riesgo |
+|------|--------|--------|
+| Compartidos (markets, TA, cashback, slugs broker) | `redirects.ts` siempre | Afectan **EN y todos** |
+| Solo mercado | `NEXT_PUBLIC_LOCALE === 'xx'` | No tocar EN |
+| Path localizado | Rewrite **sin** 301 si ambas URLs deben vivir | 301 global rompe EN |
+| Landings SEO | Lista de slugs, nunca `/:slug` abierto | Robaría `/news`, etc. |
+
+ES master: `/brokers/best` y `/brokers/best/countries` → `/brokers` **solo `es`**. Showcases `/brokers/best/{slug}` siguen. 404 de showcase → `/brokers`.
+
+### 4.2 Crawl
 
 | Campo | Valor |
 |-------|--------|
-| Fecha | 2026-09-09 |
-| Tool | `web-scraper-toolkit` preset `fxstreet-es` (artefactos no versionados aquí) |
-| Origen | `https://www.fxstreet.es/` |
-| Resultado | 67 URLs · ~40 patrones (sin ruido `cdn-cgi`) |
-
-**Veredicto:** alcance por **patrones** correcto; familias dinámicas = `/…/[slug]`. Reproducir en el toolkit:
+| 2026-09-09 | 67 URLs / ~40 patrones (`fxstreet-es`, artículos fuera) |
+| 2026-09-17 | El CSV viejo `fxstreet-es-pages.csv` **incluye href rotos**. No es inventario de páginas. |
+| Herramienta | `web-scraper-toolkit`: 2xx en el CSV principal; `*.broken.csv` + `found_on` |
+| Compare | `compare-origins --legacy https://www.fxstreet.es/ --processed https://qa-s-oriol.fxstreet.com/` |
+| HTTP moved | [anexo-2026-09-17/09-http-check-moved-urls.csv](./anexo-2026-09-17/09-http-check-moved-urls.csv) |
 
 ```bash
-pnpm --filter @operezol/scraper-cli start fxstreet-es \
-  -o <out.csv> -d 250 --checkpoint-every 30
+pnpm --filter @operezol/scraper-cli start fxstreet-es -o <out.csv> -d 250 --checkpoint-every 30
 ```
 
-**Canónicas Next (mantener):** `/` · `/news` · `/analysis` · `/education` · `/cryptocurrencies` · `/brokers` (+ best/reviews/…) · `/rates-charts` · topics · `/calendario-economico` · `/macroeconomics/…` · `/company` `/author` · `/info/*` · `/account/*` · `/profile` `/search` `/subscriptions` `/rss` `/transparency-translations`.
+**Canónicas Next:** `/` · `/news` · `/analysis` · `/education` · `/cryptocurrencies` · `/brokers` · `/rates-charts` · topics · `/calendario-economico` · `/macroeconomics/…` · `/company` `/author` · `/info/*` · `/account/*` · `/profile` `/search` `/subscriptions` `/rss` `/transparency-translations`.
 
-**Legacy / pendiente PO (README § final):** educacion · mexico · live-video · curso-forex · technical-analysis · landings SEO raíz · bonds · jobs · organismos · events/strategy · tabla-tipos · advertising-and-sponsorship · brokers-forex · posts raíz · calendario event GUID. Press = EN-only (cerrado).
+Criterio URLs (15/09): match → migrar · EN only → migrar salvo P15 · ES only → dictamen. Grupo A README = espejo Next (no legado). Grupo B = live-video, mexico, curso-forex, `educacion/*` unidades, rates/TA legado.
+
+### 4.3 301 ES verificados (17/09, Aitor)
+
+Origen 404 live + dest 2xx (al menos legacy).
+
+| Origen | Destino |
+|--------|---------|
+| 26 landings `/{tipo}-brokers-{país}` | `/brokers/best/{slug}` (muchas 404 en QA = CMS) |
+| `/educacion` | `/education` |
+| `/company/xtb` | `/brokers/xtb` |
+| `/economic-calendar/event/nfp` | `/macroeconomics/economic-indicator/nfp` |
+| `/pronostico-del-precio-…-202607130702` | `/news/…` |
+
+No 301: resto de `event/{slug-corto}`, unidades curso. Mapa EN↔ES: `csv/mapeado-paginas.xlsx`. Tráfico 12m: pendiente Data.
+
+### 4.4 Antes de merge / push
+
+- Sin `<<<<<<<` en código.
+- Conservar de master: UserToken (injector sin `userId`), highlights estáticos, robots, 301 hub best solo ES.
+- Conservar de la rama: path calendario, gates, rewrites.
+- Ningún 301 sin dest 2xx.
+- EN: `/economic-calendar` sigue; `/brokers/best` **no** redirige a `/brokers`.
 
 ---
 
-## 5. Estado vivo ES + go-live
+## 5. Estado vivo ES
 
 | Área | Estado |
 |------|--------|
-| Colocation Ana + keys EN↔ES | `[x]` keys · `[~]` copy humano |
-| Calendario path ES + redirects | `[x]` |
-| Nav ES sin press; legacy saneado | `[x]` URLs · `[~]` labels humanos |
-| Hardcodes → i18n | `[x]` |
-| `.env.example` EN/ES | `[x]` |
-| Charts `en-US` documentado | `[x]` |
-| Crawl patrones | `[x]` |
-| Gates EN-only | Cerrados salvo orden PO |
-| Gateway / CDN / CMS / Algolia / smoke | `[ ]` ops + editorial |
+| Keys EN↔ES | `[x]` · copy humano `[~]` |
+| Calendario path + rewrite | `[x]` |
+| Nav ES | `[x]` URLs · `[~]` labels |
+| Hardcodes | `[x]` |
+| Deploy matrix / env | `[x]` código |
+| Redirects SEO 17/09 | `[x]` en WIP local `redirects.ts` |
+| Gateway / CMS / Algolia | `[ ]` (generación pedida) |
+| Lotes 01–07 humanos | `[ ]` |
+| QA lote 08 / smoke / regresión EN | `[ ]` |
 
-**Go-live técnico ES:** lotes PO 01–04 reintegrados · smoke QA/PRO · `Languages.es` + CMS/Algolia · regresión EN · menú sin gated EN.
+**Go-live:** 01–04 reintegrados · `Languages.es` · CMS/Algolia · smoke · menú sin gated EN · regresión EN.
 
-| Aprobación eng | Nombre | ☐ Aprobado / ☐ Con cambios / ☐ Rechazado | Fecha |
-|----------------|--------|------------------------------------------|-------|
-| | | | |
+### Orden ES ahora
 
-### Orden de trabajo ES (ahora)
+1. Sheets 01–07 en revisión humana.
+2. Gateway genera `es` + Algolia/sitemaps.
+3. Eng: empty states, no-EN-fallback, QA lote 08.
+4. Reintegrar Sheets.
+5. Ops smoke qa/pro.
+6. Congelar lecciones **en este TECNICO**.
 
-1. Publicar en Drive: README (Doc) + Sheets 01–06 (import desde [csv/](./csv/)).  
-2. Alcance PO cerrado (espejo EN; sin solo-EN). Encargos: Traducciones / SEO / Legal — [README](./README.md).  
-3. Revisión humana en Sheets (prioridad 01→04).  
-4. Eng exporta Sheets → reintegra JSON/nav.  
-5. Ops: gateway + CDN + CMS/Algolia/sitemaps ∥ redirects landings pendientes.  
-6. QA F → PRO.  
-7. Congelar como baseline del §1 para el siguiente `xx`.
+---
+
+## 6. Lecciones para el siguiente idioma
+
+| Lección ES | En `xx` |
+|------------|---------|
+| Calendario | Preguntar path. ES: `/calendario-economico` + rewrite, slugs EN. |
+| Hub best brokers | Puede 301 al listing (ES: hub → `/brokers`). Showcases aparte. |
+| Landings raíz `*-brokers-*` | 301 a canónico **tras HTTP**. |
+| `/educacion` | 301 hub; no unidades a ciegas. |
+| `company` → `brokers` | Solo si el listing existe (xtb). |
+| Eventos calendar cortos | Casi todos muertos; solo NFP tenía dest. |
+| Scrape | 2xx + `found_on`; no fiarse del CSV viejo. |
+| Gateway | Pedir cultura **antes** de pelear empty states. |
+| Copy | Drive; JSON no está cerrado. |
+| Master | Re-merge. UserToken y highlight lists rompen APIs viejas. |
+
+Diario: [anexo-2026-09-16](./anexo-2026-09-16/) · [anexo-2026-09-17](./anexo-2026-09-17/).
