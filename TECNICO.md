@@ -6,7 +6,7 @@
 | **Producto (PO)** | [README.md](./README.md) + [csv/](./csv/) `01`–`06` — **no sobrescribir** (Drive / Sheets; el PO ya trabaja ahí) |
 | **Este documento** | Guía viva end-to-end. **Se puede pisar cada día.** No vive en el repo Site. |
 | **Updates del día** | `anexo-YYYY-MM-DD/` — no tocar README ni lotes PO |
-| **Referencia viva ES** | `es` / `fxstreet.es` · rama Site `oriol/es-routing-and-nav` |
+| **Referencia viva ES** | `es` / `fxstreet.es` · rama `oriol/es-routing-and-nav` · QA [qa-es-site-oriol.fxstreet.com](https://qa-es-site-oriol.fxstreet.com/) |
 
 **Distribución PO:** Drive con el README (Doc) + una Sheet por lote (`01`…`06`). Extra para el PO = anexo de esa fecha (p. ej. lote 07 el 16/09). El PO no usa GitHub. Eng exporta Sheet → CSV y reintegra en Site.
 
@@ -22,7 +22,7 @@
 | Día | Carpeta |
 |-----|---------|
 | 16/09/2026 | [anexo-2026-09-16](./anexo-2026-09-16/) — instrucciones PO (calendario + lote 07) |
-| 17/09/2026 | [anexo-2026-09-17](./anexo-2026-09-17/) — QA plantillas, 301 HTTP, cierre, esta convención |
+| 17/09/2026 | [anexo-2026-09-17/updates.md](./anexo-2026-09-17/updates.md) — reporte del día (QA [qa-es-site-oriol](https://qa-es-site-oriol.fxstreet.com/), 301, compare) |
 
 **Convención:** `[ ]` pendiente · `[~]` parcial · `[x]` hecho · `[D]` decisión de producto (no abrir sin PO).
 
@@ -209,7 +209,7 @@ Reglas: namespace = carpeta kebab; diccionario nuevo = EN+`xx` **y** registro; b
 | C4 | `SiteLocale` / `Language` incluye `xx` | `[x]` |
 | C5 | Switcher TLD absoluto | `[x]` |
 | C6 | Gateway `Languages.xx` | `[ ]` |
-| C7 | Smoke QA+PRO; regresión EN | `[ ]` |
+| C7 | Smoke QA+PRO; regresión EN | `[~]` smoke QA Oriol; PRO/EN `[ ]` |
 | C8 | Charts `en-US` | `[x]` |
 | C9 | OneSignal, Turnstile, cookies, mails | `[~]` mailto |
 
@@ -232,7 +232,7 @@ Reglas: namespace = carpeta kebab; diccionario nuevo = EN+`xx` **y** registro; b
 | E2 | Redirects legado | `[x]` mayor parte |
 | E3 | Path EN accesible sin 301 si hay rewrite | `[x]` calendario |
 | E4 | Landings / posts legacy | `[x]` HTTP 17/09; resto grupo B |
-| E5 | Crawl patrones canónicos | `[x]` 2026-09-09 |
+| E5 | Crawl patrones canónicos | `[x]` compare 17/09 vs QA nuevo |
 
 ### F. QA
 
@@ -308,9 +308,9 @@ ES master: `/brokers/best` y `/brokers/best/countries` → `/brokers` **solo `es
 | Campo | Valor |
 |-------|--------|
 | 2026-09-09 | 67 URLs / ~40 patrones (`fxstreet-es`, artículos fuera) |
-| 2026-09-17 | El CSV viejo `fxstreet-es-pages.csv` **incluye href rotos**. No es inventario de páginas. |
+| 2026-09-17 tarde | Compare vs **QA nuevo** [qa-es-site-oriol.fxstreet.com](https://qa-es-site-oriol.fxstreet.com/): 71 keys · 25 same-path · 2 calendar-alias · 15 processed-only · 19 legacy-only. Detalle: [anexo-2026-09-17/compare-origins.md](./anexo-2026-09-17/compare-origins.md) |
 | Herramienta | `web-scraper-toolkit`: 2xx en el CSV principal; `*.broken.csv` + `found_on` |
-| Compare | `compare-origins --legacy https://www.fxstreet.es/ --processed https://qa-s-oriol.fxstreet.com/` |
+| Compare | `compare-origins --legacy https://www.fxstreet.es/ --processed https://qa-es-site-oriol.fxstreet.com/` |
 | HTTP moved | [anexo-2026-09-17/09-http-check-moved-urls.csv](./anexo-2026-09-17/09-http-check-moved-urls.csv) |
 
 ```bash
@@ -354,10 +354,11 @@ No 301: resto de `event/{slug-corto}`, unidades curso. Mapa EN↔ES: `csv/mapead
 | Nav ES | `[x]` URLs · `[~]` labels |
 | Hardcodes | `[x]` |
 | Deploy matrix / env | `[x]` código |
-| Redirects SEO 17/09 | `[x]` en WIP local `redirects.ts` |
-| Gateway / CMS / Algolia | `[ ]` (generación pedida) |
+| Redirects SEO 17/09 | `[x]` en QA (`/educacion`, landings bróker, xtb, nfp) |
+| Deploy QA Oriol | `[x]` [qa-es-site-oriol.fxstreet.com](https://qa-es-site-oriol.fxstreet.com/) |
+| Gateway / CMS / Algolia | `[ ]` (home QA aún mezcla editorial EN) |
 | Lotes 01–07 humanos | `[ ]` |
-| QA lote 08 / smoke / regresión EN | `[ ]` |
+| QA lote 08 / smoke / regresión EN | `[~]` host lote 08 actualizado; pasada humana `[ ]` |
 
 **Go-live:** 01–04 reintegrados · `Languages.es` · CMS/Algolia · smoke · menú sin gated EN · regresión EN.
 

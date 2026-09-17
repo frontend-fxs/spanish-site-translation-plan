@@ -8,12 +8,12 @@ Entrega para QA / PO: listado de **plantillas Next** del Site que **ya responden
 
 ## Cómo usarlo
 
-1. Abrir cada **URL QA** del CSV (`https://qa-s-oriol.fxstreet.com/…`).
+1. Abrir cada **URL QA** del CSV (`https://qa-es-site-oriol.fxstreet.com/…`).
 2. Comprobar que la plantilla carga, el chrome (menú / pie) está en español y el path canónico es el de la columna `Path canónico ES`.
 3. En filas **dinámicas**, usar un slug vivo del CMS ES; la fila es la plantilla, no un artículo concreto.
 4. El copy de interfaz sigue siendo **borrador IA** (lotes 01–07). Este CSV no pide re-revisar traducciones; pide QA de **página / routing / locale**.
 
-Entorno de referencia: **QA** `https://qa-s-oriol.fxstreet.com/` (`NEXT_PUBLIC_LOCALE=es`). Producción `https://www.fxstreet.es` usa las mismas rutas cuando ese deploy esté en el Site Next.
+Entorno de referencia: **QA** `https://qa-es-site-oriol.fxstreet.com/` (`NEXT_PUBLIC_LOCALE=es`). El host anterior `qa-s-oriol.fxstreet.com` ya no aplica. Producción `https://www.fxstreet.es` usa las mismas rutas cuando ese deploy esté en el Site Next.
 
 ---
 
